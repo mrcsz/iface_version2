@@ -2,6 +2,13 @@ package br.edu.ufal.view;
 
 public class Screen {
 	
+	public static void inputError(){
+		System.err.println("   entrada invalida, digite um inteiro");
+	}
+	
+	
+	
+	
 	public void exibirMenu1(){
 		
 			System.out.println(" xxxxxxxxxxxxxxxxxxxxxxxxxxxx");
