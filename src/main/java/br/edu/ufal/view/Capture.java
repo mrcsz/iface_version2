@@ -5,9 +5,9 @@ import java.util.Scanner;
 
 public class Capture {
 
-	Scanner input = new Scanner(System.in);
+	static Scanner input = new Scanner(System.in);
 	
-	public int captureSwitchOption(){
+	public static int switchOption(){
 		
 		try {
 			return input.nextInt();

@@ -1,35 +1,26 @@
 package br.edu.ufal.application;
 
-
+import br.edu.ufal.view.Capture;
+import br.edu.ufal.view.Screen;
 
 public class App {
 
 	public static void main(String[] args){
 
-		Entrada in = new Entrada();
-		Saida out = new Saida();
-		Controle control = new Controle();
-		//set user default
-		control.init();
-
-
-
-		boolean loopGERAL = true;
+		boolean loopGENERAL = true;
 		boolean loop;
 
 
-		while(loopGERAL){
+		while(loopGENERAL){
 
 			loop = true;
-			out.exibirMenu1();//MENU INICIAL
-			switch (in.obterOpcao()){
+			Screen.menuDisplay();//MENU INICIAL
+			switch (Capture.switchOption()){
 			//OPCOES INICIAIS
-
 
 			case 1://LOGIN
 
-				int codUserAtual = control.autenticacao();
-				if(codUserAtual != -1){
+				if(controller.autenticacao() != -1){
 					//USER AUTORIZADO
 
 					while(loop){

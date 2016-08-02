@@ -1,8 +1,5 @@
 package br.edu.ufal.components;
 
-import banco.Trabalho;
-import banco.UnidadeEducacional;
-
 public class Profile{
 	InformationsProfessional trabalho;
 	UnidadeEducacional unidadeEducacional;

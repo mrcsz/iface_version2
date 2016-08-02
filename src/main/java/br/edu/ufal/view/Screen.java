@@ -2,14 +2,8 @@ package br.edu.ufal.view;
 
 public class Screen {
 	
-	public static void inputError(){
-		System.err.println("   entrada invalida, digite um inteiro");
-	}
 	
-	
-	
-	
-	public void exibirMenu1(){
+	public static void menuDisplay(){
 		
 			System.out.println(" xxxxxxxxxxxxxxxxxxxxxxxxxxxx");
 			System.out.println("|   1 - Login                |");
@@ -266,6 +260,22 @@ return msg;
 		System.out.println("|          Voce ja sao amigos       |");
 		System.out.println(" -----------------------------------");
 		System.out.println("");
+	}
+
+
+
+
+	public static void inputError(){
+		System.err.println("   Entrada invalida, digite um inteiro");
+	}
+	
+	
+	public static void invalidDateError() {
+		System.err.println("   Data Invalida");
+	}
+
+	public static void invalidEmailError() {
+		System.err.println("   Email Invalida");
 	}
 }
 
