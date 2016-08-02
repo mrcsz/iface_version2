@@ -6,15 +6,15 @@ import java.util.Scanner;
 public class Capture {
 
 	static Scanner input = new Scanner(System.in);
-	
-	public static int switchOption(){
-		
+
+	public static int getOptionInt() {
+
 		try {
 			return input.nextInt();
-		} catch (InputMismatchException e){
-			Screen.inputError();
+		} catch (InputMismatchException e) {
+			PrintError.inputError();
 		}
-		
+
 		return 0;
 	}
 

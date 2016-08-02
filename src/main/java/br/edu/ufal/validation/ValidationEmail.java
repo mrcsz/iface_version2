@@ -3,7 +3,7 @@ package br.edu.ufal.validation;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import br.edu.ufal.view.Screen;
+import br.edu.ufal.view.PrintError;
 
 
 public class ValidationEmail {
@@ -16,7 +16,7 @@ public class ValidationEmail {
 		
 		if (!m.find()){
 			//EMAIL INVALIDO
-			Screen.invalidEmailError();
+			PrintError.invalidEmailError();
 			return false;
 		}
 			

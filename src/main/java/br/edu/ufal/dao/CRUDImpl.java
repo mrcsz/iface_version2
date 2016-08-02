@@ -7,7 +7,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-import br.edu.ufal.components.User;
+import br.edu.ufal.model.User;
 
 public class CRUDImpl{
 
@@ -31,8 +31,6 @@ public class CRUDImpl{
 		}
 
 	}
-
-	
 
 	public void updateInstance(User instance) {
 

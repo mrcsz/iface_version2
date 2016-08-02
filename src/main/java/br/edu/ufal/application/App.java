@@ -8,15 +8,15 @@ public class App {
 
 	public static void main(String[] args){
 
-		boolean loopGENERAL = true;
+		boolean loopGeneral = true;
 		boolean loop;
 
 
-		while(loopGENERAL){
+		while(loopGeneral){
 
 			loop = true;
-			Screen.menuDisplay();//MENU INICIAL
-			switch (Capture.switchOption()){
+			Screen.menuDisplayLogin();//MENU INICIAL
+			switch (Capture.getOptionInt()){
 			//OPCOES INICIAIS
 
 //			case 1://LOGIN
@@ -253,15 +253,24 @@ public class App {
 //				break;
 //
 			case 2://CADASTRO
-
-				Controller.addUser();
+				boolean bool = true;
+				while(bool){
+					
+					if(Controller.addUser() == -1){
+						Screen.displayMenuTryAgain();
+						
+						if(Capture.getOptionInt() != 1){
+							bool = false;
+						}
+					}
+				}
 				
 				break;
-//
-//			case 3: //ENCERRAR APLICACAO
-//				loopGERAL = false;
-//				out.exibirEncerrando();
-//
+
+			case 3: //ENCERRAR APLICACAO
+				loopGeneral = false;
+				//FIM DA APLICACAO
+				
 			} //END SWITCH OPCOES INICIAIS
 		} //END LOOP GERAL
 	} //END METODO MAIN

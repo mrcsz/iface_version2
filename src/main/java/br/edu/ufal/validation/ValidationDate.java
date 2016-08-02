@@ -5,11 +5,11 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-import br.edu.ufal.view.Screen;
+import br.edu.ufal.view.PrintError;
 
 public class ValidationDate {
 
-	static public boolean validateDateOfBirth(String birth) {
+	static public boolean validateDateOfBirth(String dateBirth) {
 		boolean bool = false;
 
 		Calendar currentDate = new GregorianCalendar();
@@ -20,9 +20,9 @@ public class ValidationDate {
 		dtBirth.setLenient(false);
 
 		try {
-			dtBirth.setTime(dateFormat.parse(birth));
+			dtBirth.setTime(dateFormat.parse(dateBirth));
 
-			if (validateValuesDate(birth)) {
+			if (validateValuesDate(dateBirth)) {
 
 				if (dtBirth.after(currentDate))
 					bool = false;
@@ -34,7 +34,7 @@ public class ValidationDate {
 
 		} catch (ParseException ex) {
 
-			Screen.invalidDateError();
+			PrintError.invalidDateError();
 			bool = false;
 		}
 
@@ -60,7 +60,7 @@ public class ValidationDate {
 
 		} catch (ParseException ex) {
 
-			Screen.invalidDateError();
+			PrintError.invalidDateError();
 			bool = false;
 		}
 
@@ -93,7 +93,7 @@ public class ValidationDate {
 
 		} catch (ParseException ex) {
 			
-			Screen.invalidDateError();
+			PrintError.invalidDateError();
 			bool = false;
 		}
 

@@ -1,4 +1,4 @@
-package br.edu.ufal.components;
+package br.edu.ufal.model;
 
 public class Profile{
 	InformationsProfessional trabalho;

@@ -1,4 +1,4 @@
-package br.edu.ufal.components;
+package br.edu.ufal.model;
 
 import java.util.ArrayList;
 
@@ -8,37 +8,32 @@ import javax.persistence.Id;
 
 @Entity
 public class User {
-	
+
 	@Id
 	@GeneratedValue
 	private int id;
-	
-	private String nome;
-	private String sobrenome;
+
+	private String name;
+	private String lastName;
 	private String email;
-	private String nasc;
-	private String senha;
-	private String sexo;
-	
+	private String dateBirth;
+	private String password;
+	private String sex;
+
 	Profile perfil;
-	ArrayList<Integer> solicitacoes;	
+	ArrayList<Integer> solicitacoes;
 	ArrayList<User> amigos;
 	ArrayList<Chat> conversas;
 	
-	public User(int id, String nome, String sobrenome, String email, String nasc, String senha, String sexo,
-			Profile perfil, ArrayList<Integer> solicitacoes, ArrayList<User> amigos, ArrayList<Chat> conversas) {
-		super();
-		this.id = id;
-		this.nome = nome;
-		this.sobrenome = sobrenome;
+	public User(String name, String lastName, String email, String dateBirth, String password, String sex) {
+	
+		this.name = name;
+		this.lastName = lastName;
 		this.email = email;
-		this.nasc = nasc;
-		this.senha = senha;
-		this.sexo = sexo;
-		this.perfil = perfil;
-		this.solicitacoes = solicitacoes;
-		this.amigos = amigos;
-		this.conversas = conversas;
+		this.dateBirth = dateBirth;
+		this.password = password;
+		this.sex = sex;
+		
 	}
 
 	public int getId() {
@@ -49,20 +44,20 @@ public class User {
 		this.id = id;
 	}
 
-	public String getNome() {
-		return nome;
+	public String getName() {
+		return name;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public String getSobrenome() {
-		return sobrenome;
+	public String getLastName() {
+		return lastName;
 	}
 
-	public void setSobrenome(String sobrenome) {
-		this.sobrenome = sobrenome;
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 
 	public String getEmail() {
@@ -73,28 +68,28 @@ public class User {
 		this.email = email;
 	}
 
-	public String getNasc() {
-		return nasc;
+	public String getDateBirth() {
+		return dateBirth;
 	}
 
-	public void setNasc(String nasc) {
-		this.nasc = nasc;
+	public void setDateBirth(String dateBirth) {
+		this.dateBirth = dateBirth;
 	}
 
-	public String getSenha() {
-		return senha;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setSenha(String senha) {
-		this.senha = senha;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
-	public String getSexo() {
-		return sexo;
+	public String getSex() {
+		return sex;
 	}
 
-	public void setSexo(String sexo) {
-		this.sexo = sexo;
+	public void setSex(String sex) {
+		this.sex = sex;
 	}
 
 	public Profile getPerfil() {
@@ -128,8 +123,5 @@ public class User {
 	public void setConversas(ArrayList<Chat> conversas) {
 		this.conversas = conversas;
 	}
-	
-	
-	
-	
+
 }
