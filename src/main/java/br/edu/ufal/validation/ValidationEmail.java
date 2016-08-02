@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 import br.edu.ufal.view.Screen;
 
 
-public class ValidateEmail {
+public class ValidationEmail {
 
 	public static boolean validate(String email){
 

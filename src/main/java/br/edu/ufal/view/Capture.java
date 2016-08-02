@@ -17,4 +17,34 @@ public class Capture {
 		
 		return 0;
 	}
+
+	public static String nameUser() {
+		Screen.getNameUser();
+		return input.nextLine();
+	}
+
+	public static String lastNameUser() {
+		Screen.getLastNameUser();
+		return input.nextLine();
+	}
+
+	public static String emailUser() {
+		Screen.getEmailUser();
+		return input.nextLine();
+	}
+
+	public static String passwordUser() {
+		Screen.getPasswordUser();
+		return input.nextLine();
+	}
+
+	public static String sexUser() {
+		Screen.getSexUser();
+		return input.nextLine();
+	}
+
+	public static String dateBirthUser() {
+		Screen.getDateBirthUser();
+		return input.nextLine();
+	}
 }

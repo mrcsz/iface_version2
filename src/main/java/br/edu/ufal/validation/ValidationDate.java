@@ -7,7 +7,7 @@ import java.util.GregorianCalendar;
 
 import br.edu.ufal.view.Screen;
 
-public class ValidateDate {
+public class ValidationDate {
 
 	static public boolean validateDateOfBirth(String birth) {
 		boolean bool = false;

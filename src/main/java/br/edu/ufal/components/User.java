@@ -2,23 +2,32 @@ package br.edu.ufal.components;
 
 import java.util.ArrayList;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
+@Entity
 public class User {
+	
+	@Id
+	@GeneratedValue
 	private int id;
+	
 	private String nome;
 	private String sobrenome;
 	private String email;
 	private String nasc;
 	private String senha;
 	private String sexo;
+	
 	Profile perfil;
-	protected ArrayList<Integer> solicitacoes;
-	protected int [] amigos;
+	ArrayList<Integer> solicitacoes;	
+	ArrayList<User> amigos;
+	ArrayList<Chat> conversas;
 	
-	protected ArrayList<Chat> conversas;
-	
-
-	public User(int id, String nome, String sobrenome, String email, String nasc, String senha, String sexo) {
+	public User(int id, String nome, String sobrenome, String email, String nasc, String senha, String sexo,
+			Profile perfil, ArrayList<Integer> solicitacoes, ArrayList<User> amigos, ArrayList<Chat> conversas) {
+		super();
 		this.id = id;
 		this.nome = nome;
 		this.sobrenome = sobrenome;
@@ -26,14 +35,11 @@ public class User {
 		this.nasc = nasc;
 		this.senha = senha;
 		this.sexo = sexo;
-		this.perfil = new Profile();
-		this.solicitacoes = new ArrayList<Integer>();
-		this.amigos = new int[1000];
-		this.conversas = new ArrayList<Chat>();
-		amigos[id] = 1; //ELE � AMIGO DELE MESMO
-		
+		this.perfil = perfil;
+		this.solicitacoes = solicitacoes;
+		this.amigos = amigos;
+		this.conversas = conversas;
 	}
-	
 
 	public int getId() {
 		return id;
@@ -41,6 +47,14 @@ public class User {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 	public String getSobrenome() {
@@ -76,19 +90,46 @@ public class User {
 	}
 
 	public String getSexo() {
-		if(sexo.equalsIgnoreCase("M")) return "Masculino";
-		else return "Feminino";
+		return sexo;
 	}
 
 	public void setSexo(String sexo) {
 		this.sexo = sexo;
 	}
-	
-	public String getNome() {
-		return nome;	
+
+	public Profile getPerfil() {
+		return perfil;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setPerfil(Profile perfil) {
+		this.perfil = perfil;
 	}
+
+	public ArrayList<Integer> getSolicitacoes() {
+		return solicitacoes;
+	}
+
+	public void setSolicitacoes(ArrayList<Integer> solicitacoes) {
+		this.solicitacoes = solicitacoes;
+	}
+
+	public ArrayList<User> getAmigos() {
+		return amigos;
+	}
+
+	public void setAmigos(ArrayList<User> amigos) {
+		this.amigos = amigos;
+	}
+
+	public ArrayList<Chat> getConversas() {
+		return conversas;
+	}
+
+	public void setConversas(ArrayList<Chat> conversas) {
+		this.conversas = conversas;
+	}
+	
+	
+	
+	
 }
