@@ -14,6 +14,7 @@ public class CRUDImpl{
 	final ThreadLocal<Session> threadLocal = new ThreadLocal<Session>();
 	final SessionFactory sessionFactory = new Configuration().configure("./META-INF/hibernate.cfg.xml")
 			.buildSessionFactory();
+	
 	Session session = threadLocal.get();
 
 	public void addInstance(User instance) {

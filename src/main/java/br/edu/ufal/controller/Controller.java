@@ -14,7 +14,6 @@ public class Controller {
 	public static int addUser() {
 		
 		CRUDImpl crudImpl = new CRUDImpl();
-		
 		String name = Capture.nameUser();
 		if (!ValidationData.validateNome(name)) {
 			PrintError.invalidNameError();
@@ -46,7 +45,9 @@ public class Controller {
 			return -1;
 		}
 		
+		
 		crudImpl.addInstance(new User(name, lastName, email, dateBirth, password, sex));
+		
 		return 1;
 		
 		// gerUsers.addUserBanco(new Usuarios(id, nome, sobrenome, email, nasc,

@@ -277,19 +277,19 @@ public class Screen {
 	}
 
 	public static void getEmailUser() {
-		System.out.println("   Email: ");
+		System.out.print("   Email: ");
 	}
 
 	public static void getPasswordUser() {
-		System.out.println("   Email(minimo 4 digitos): ");
+		System.out.print("   Senha(minimo 4 digitos): ");
 	}
 
 	public static void getSexUser() {
-		System.out.println("   Sexo(M/F): ");
+		System.out.print("   Sexo(M/F): ");
 	}
 
 	public static void getDateBirthUser() {
-		System.out.println("Data de Nascimento(dd/MM/yyyy): ");
+		System.out.print("Data de Nascimento(dd/MM/yyyy): ");
 	}
 
 	public static void displayMenuTryAgain() {

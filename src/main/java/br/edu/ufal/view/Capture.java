@@ -20,31 +20,31 @@ public class Capture {
 
 	public static String nameUser() {
 		Screen.getNameUser();
-		return input.nextLine();
+		return input.next();
 	}
 
 	public static String lastNameUser() {
 		Screen.getLastNameUser();
-		return input.nextLine();
+		return input.next();
 	}
 
 	public static String emailUser() {
 		Screen.getEmailUser();
-		return input.nextLine();
+		return input.next();
 	}
 
 	public static String passwordUser() {
 		Screen.getPasswordUser();
-		return input.nextLine();
+		return input.next();
 	}
 
 	public static String sexUser() {
 		Screen.getSexUser();
-		return input.nextLine();
+		return input.next();
 	}
 
 	public static String dateBirthUser() {
 		Screen.getDateBirthUser();
-		return input.nextLine();
+		return input.next();
 	}
 }

@@ -1,18 +1,37 @@
 package br.edu.ufal.model;
 
+import javax.persistence.Embeddable;
+
+@Embeddable
 public class Profile{
-	InformationsProfessional trabalho;
-	UnidadeEducacional unidadeEducacional;
+	
+	ProfessionalInformation professionalInformation;
+	EducationalInformation educationalInformation;
 	private String status;
-	private String telefone;
+	private String contact;
 	
 	public Profile() {
-		this.trabalho = new InformationsProfessional();
-		this.unidadeEducacional = new UnidadeEducacional();
-		this.status = null;
-		this.telefone = null;
+		this.professionalInformation = new ProfessionalInformation();
+		this.educationalInformation = new EducationalInformation();
+		this.status = "";
+		this.contact = "";
 	}
 
+	public ProfessionalInformation getProfessionalInformation() {
+		return professionalInformation;
+	}
+
+	public void setProfessionalInformation(ProfessionalInformation professionalInformation) {
+		this.professionalInformation = professionalInformation;
+	}
+
+	public EducationalInformation getEducationalInformation() {
+		return educationalInformation;
+	}
+
+	public void setEducationalInformation(EducationalInformation educationalInformation) {
+		this.educationalInformation = educationalInformation;
+	}
 
 	public String getStatus() {
 		return status;
@@ -22,15 +41,13 @@ public class Profile{
 		this.status = status;
 	}
 
-	public String getTelefone() {
-		return telefone;
+	public String getContact() {
+		return contact;
 	}
 
-	public void setTelefone(String telefone) {
-		this.telefone = telefone;
-	}
-	
-	
+	public void setContact(String contact) {
+		this.contact = contact;
+	}	
 	
 	
 }
