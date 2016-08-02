@@ -4,8 +4,6 @@ import java.util.Scanner;
 
 public class validateSwitchOption {
 	
-	static Scanner in = new Scanner(System.in);
-	
 	public int validateOption() {
 		try {
 			

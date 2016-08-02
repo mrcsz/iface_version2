@@ -9,7 +9,6 @@ import org.hibernate.cfg.Configuration;
 
 import br.edu.ufal.components.User;
 
-@SuppressWarnings("rawtypes")
 public class CRUDImpl{
 
 	final ThreadLocal<Session> threadLocal = new ThreadLocal<Session>();
@@ -69,7 +68,7 @@ public class CRUDImpl{
 
 	}
 
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings({ "unchecked", "deprecation" })
 	public List<User> getAllInstances() {
 		session = sessionFactory.openSession();
 		List<User> list = null;
