@@ -1,16 +1,23 @@
 package br.edu.ufal.model;
 
-import java.util.ArrayList;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
 
 @Entity
 public class User {
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 
 	private String name;
@@ -19,22 +26,16 @@ public class User {
 	private String dateBirth;
 	private String password;
 	private String sex;
-
 	Profile perfil;
-	ArrayList<Integer> solicitacoes;
-	ArrayList<User> amigos;
-	ArrayList<Chat> conversas;
 	
-	public User(String name, String lastName, String email, String dateBirth, String password, String sex) {
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	List<Solicitation> solicitation = new ArrayList<Solicitation>();
 	
-		this.name = name;
-		this.lastName = lastName;
-		this.email = email;
-		this.dateBirth = dateBirth;
-		this.password = password;
-		this.sex = sex;
-		
-	}
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	List<Friend> friend;
+	
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	List<Chat> conversation;
 
 	public int getId() {
 		return id;
@@ -42,6 +43,38 @@ public class User {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public Profile getPerfil() {
+		return perfil;
+	}
+
+	public void setPerfil(Profile perfil) {
+		this.perfil = perfil;
+	}
+
+	public List<Solicitation> getSolicitation() {
+		return solicitation;
+	}
+
+	public void setSolicitation(ArrayList<Solicitation> solicitation) {
+		this.solicitation = solicitation;
+	}
+
+	public List<Friend> getFriend() {
+		return friend;
+	}
+
+	public void setFriend(ArrayList<Friend> friend) {
+		this.friend = friend;
+	}
+
+	public List<Chat> getConversation() {
+		return conversation;
+	}
+
+	public void setConversation(ArrayList<Chat> conversation) {
+		this.conversation = conversation;
 	}
 
 	public String getName() {
@@ -90,38 +123,6 @@ public class User {
 
 	public void setSex(String sex) {
 		this.sex = sex;
-	}
-
-	public Profile getPerfil() {
-		return perfil;
-	}
-
-	public void setPerfil(Profile perfil) {
-		this.perfil = perfil;
-	}
-
-	public ArrayList<Integer> getSolicitacoes() {
-		return solicitacoes;
-	}
-
-	public void setSolicitacoes(ArrayList<Integer> solicitacoes) {
-		this.solicitacoes = solicitacoes;
-	}
-
-	public ArrayList<User> getAmigos() {
-		return amigos;
-	}
-
-	public void setAmigos(ArrayList<User> amigos) {
-		this.amigos = amigos;
-	}
-
-	public ArrayList<Chat> getConversas() {
-		return conversas;
-	}
-
-	public void setConversas(ArrayList<Chat> conversas) {
-		this.conversas = conversas;
 	}
 
 }

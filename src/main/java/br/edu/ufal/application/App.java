@@ -19,25 +19,27 @@ public class App {
 			switch (Capture.getOptionInt()){
 			//OPCOES INICIAIS
 
-//			case 1://LOGIN
-//
-//				if(controller.autenticacao() != -1){
-//					//USER AUTORIZADO
-//
-//					while(loop){
-//						//LOOP DE NAVEGACAO
-//
-//
-//						out.menuInicial();
+			case 1://LOGIN
+				
+				int idUser = Controller.authenticationLogin();
+				if(idUser != -1){
+					//USER AUTORIZADO
+					
+
+					while(loop){
+						//LOOP DE NAVEGACAO
+
+						System.out.println("idUser " + idUser);
+						Screen.displayInitialMenu();
 //						//MENU INICIAL
 //
-//						switch(in.obterOpcao()){
+						switch(Capture.getOptionInt()){
 //						//NAVEGACAO	
 //
 //
-//						case 1://PERFIL
+						case 1://PERFIL
 //							control.gerUsers.ImprimePerfil(codUserAtual);
-//
+
 //							out.exibeOpcoesPerfil();
 //
 //							switch(in.obterOpcao()){ //OPCOES EDITAR/VOLTAR
@@ -235,33 +237,35 @@ public class App {
 //							default:
 //								//VOLTAR
 //							}
-//						case 7: //LOGOUT
-//							loop = false;
-//
-//							break;
-//						case 8: //ENCERRA APLICATIVO
-//							loop = false;
-//							loopGERAL = false;
-//							out.exibirEncerrando();
-//							break;
-//
-//						} //END SWITCH NAVEGACAO
-//					} //END LOOP NAVEGACAO
-//				} 	else { //END IF AUTORIZACAO USER
+						case 7: //LOGOUT
+							loop = false;
+
+							break;
+						case 8: //ENCERRA APLICATIVO
+							loop = false;
+							loopGeneral = false;
+							Screen.appFinalised();
+							break;
+					
+						} //END SWITCH NAVEGACAO
+					} //END LOOP NAVEGACAO
+				} else { //END IF AUTORIZACAO USER
 //					//ACESSO NEGADO
-//				}
-//				break;
-//
+				}
+				break;
+
 			case 2://CADASTRO
 				boolean bool = true;
 				while(bool){
-					
 					if(Controller.addUser() == -1){
+						
 						Screen.displayMenuTryAgain();
 						
 						if(Capture.getOptionInt() != 1){
 							bool = false;
 						}
+					}else {
+						bool = false;
 					}
 				}
 				
@@ -270,7 +274,7 @@ public class App {
 			case 3: //ENCERRAR APLICACAO
 				loopGeneral = false;
 				//FIM DA APLICACAO
-				
+		
 			} //END SWITCH OPCOES INICIAIS
 		} //END LOOP GERAL
 	} //END METODO MAIN

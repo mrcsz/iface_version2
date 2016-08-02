@@ -12,13 +12,15 @@
 		<property name="hibernate.format_sql">false</property>
 		<property name="hbm2ddl.auto">update</property>
 
-		<mapping class="br.edu.ufal.model.User" />
+		
+		<mapping class="br.edu.ufal.model.User"/>
+		<mapping class="br.edu.ufal.model.Chat"/>
+		<mapping class="br.edu.ufal.model.Msg"/>
+		<mapping class="br.edu.ufal.model.Friend"/>
+		<mapping class="br.edu.ufal.model.Solicitation"/>
 		<mapping class="br.edu.ufal.model.Profile"/>
 		<mapping class="br.edu.ufal.model.ProfessionalInformation"/>
-		<mapping class="br.edu.ufal.model.EducationalInformation"/>
-		
-		
-		
+		<mapping class="br.edu.ufal.model.EducationalInformation"/>		
 
 		<!-- <mapping class="br.ufal.ic.extra.Person" /> -->
 		<!--<mapping class="br.ufal.ic.extra.CellPhone" /> -->

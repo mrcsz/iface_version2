@@ -11,34 +11,34 @@ public class Screen {
 		System.out.println(" xxxxxxxxxxxxxxxxxxxxxxxxxxxx");
 		System.out.print("   >>  ");
 	}
-	//
-	// public void exibirEncerrando() {
-	// System.out.println(" -------------------------------");
-	// System.out.println("| Encerrando aplicativo |");
-	// System.out.println(" -------------------------------");
-	// }
-	//
+	
+	 public static void appFinalised() {
+	 System.out.println(" -------------------------------");
+	 System.out.println("|     Encerrando aplicativo     |");
+	 System.out.println(" -------------------------------");
+	 }
+	
 	// public void msgVoltando() {
 	//
 	// System.out.println("|*** Voltando ao menu anterior ***|");
 	// System.out.println(" ----------------------------------------------");
 	// }
 	//
-	// public void menuInicial() {
-	// System.out.println(" #################################");
-	// System.out.println("| BEM VINDO AO IFACE |");
-	// System.out.println("| |");
-	// System.out.println("| 1 - Perfil |");
-	// System.out.println("| 2 - Amigos |");
-	// System.out.println("| 3 - Comunidades |");
-	// System.out.println("| 4 - Chat |");
-	// System.out.println("| 5 - Busca por usuario |");
-	// System.out.println("| 6 - Configuracoes |");
-	// System.out.println("| 7 - Logout |");
-	// System.out.println("| 8 - Encerrar aplicativo |");
-	// System.out.println(" xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
-	// System.out.print(" >> ");
-	// }
+	 public static void displayInitialMenu() {
+	 System.out.println(" #################################");
+	 System.out.println("| BEM VINDO AO IFACE              |");
+	 System.out.println("|                                 |");
+	 System.out.println("| 1 - Perfil                      |");
+	 System.out.println("| 2 - Amigos                      |");
+	 System.out.println("| 3 - Comunidades                 |");
+	 System.out.println("| 4 - Chat                        |");
+	 System.out.println("| 5 - Busca por usuario           |");
+	 System.out.println("| 6 - Configuracoes               |");
+	 System.out.println("| 7 - Logout                      |");
+	 System.out.println("| 8 - Encerrar aplicativo         |");
+	 System.out.println(" xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+	 System.out.print(" >> ");
+	 }
 	//
 	// public void cadastroRealizadoComSucesso() {
 	//
