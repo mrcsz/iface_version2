@@ -5,14 +5,12 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class Profile{
 	
-	ProfessionalInformation professionalInformation;
-	EducationalInformation educationalInformation;
+	public ProfessionalInformation professionalInformation = new ProfessionalInformation();
+	public EducationalInformation educationalInformation = new EducationalInformation();
 	private String status;
 	private String contact;
 	
 	public Profile() {
-		this.professionalInformation = new ProfessionalInformation();
-		this.educationalInformation = new EducationalInformation();
 		this.status = "-";
 		this.contact = "-";
 	}

@@ -38,7 +38,7 @@ public class App {
 						case 1://PERFIL
 							Controller.printProfile(idUser);
 
-//							out.exibeOpcoesPerfil();
+							Screen.profileOption();
 //
 //							switch(in.obterOpcao()){ //OPCOES EDITAR/VOLTAR
 //

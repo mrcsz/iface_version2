@@ -28,17 +28,17 @@ public class Screen {
 		 System.out.println( " Senha: " + user.getPassword());
 		 System.out.println( " Sexo: " + user.getSex());
 		 System.out.println( " Dt Nasc: " + user.getDateBirth());
-		 System.out.println( " Contato: " + user.getProfile().getContact());
-		 System.out.println( " Status: " + user.getProfile().getStatus());
+		 System.out.println( " Contato: " + user.profile.getContact());
+		 System.out.println( " Status: " + user.profile.getStatus());
 		 System.out.println( "\n ------- Informacoes Profissionais -------\n");
-		 System.out.println( " Nome da Empresa: " + user.getProfile().getProfessionalInformation().getCompanyName());
-		 System.out.println( " Funcao exercida: " + user.getProfile().getProfessionalInformation().getFunction());
-		 System.out.println( " Dt Inicio: " + user.getProfile().getProfessionalInformation().getInitialDate());
-		 System.out.println( " Dt Fim: " + user.getProfile().getProfessionalInformation().getFinalDate());
+		 System.out.println( " Nome da Empresa: " + user.profile.professionalInformation.getCompanyName());
+		 System.out.println( " Funcao exercida: " + user.profile.professionalInformation.getFunction());
+		 System.out.println( " Dt Inicio: " + user.profile.professionalInformation.getInitialDate());
+		 System.out.println( " Dt Fim: " + user.profile.professionalInformation.getFinalDate());
 		 System.out.println( "\n -------- Informacoes Educacionais ---------\n");
-		 System.out.println( " Curso: " + user.getProfile().getEducationalInformation().getCourse());
-		 System.out.println( " Nome da Instituicao: " + user.getProfile().getEducationalInformation().getInstitutionalName());
-		 System.out.println( " Ano de Conclusao: " + user.getProfile().getEducationalInformation().getYearConclusion());
+		 System.out.println( " Curso: " + user.profile.educationalInformation.getCourse());
+		 System.out.println( " Nome da Instituicao: " + user.profile.educationalInformation.getInstitutionalName());
+		 System.out.println( " Ano de Conclusao: " + user.profile.educationalInformation.getYearConclusion());
 		 System.out.println( " ------------------------------------------- \n");
 	 }
 	
@@ -117,15 +117,7 @@ public class Screen {
 	// return msg;
 	// }
 	//
-	// public void exibeOpcoesPerfil() {
-	//
-	// System.out.println(" xxxxxxxxxxxxxxxxxxxxxxxxx ");
-	// System.out.println("| 1 - Editar perfil |");
-	// System.out.println("| 2 - Voltar |");
-	// System.out.println(" xxxxxxxxxxxxxxxxxxxxxxxxx ");
-	// System.out.print(" >> ");
-	//
-	// }
+	
 	//
 	// public void opcoesDeEdicaoPerfil() {
 	//
@@ -323,5 +315,15 @@ public class Screen {
 		System.out.println("|  Cadastro realizado com sucesso   |");
 		System.out.println(" -----------------------------------");
 
+	}
+
+	public static void profileOption() {
+		//
+		// System.out.println(" xxxxxxxxxxxxxxxxxxxxxxxxx ");
+		// System.out.println("| 1 - Editar perfil |");
+		// System.out.println("| 2 - Voltar |");
+		// System.out.println(" xxxxxxxxxxxxxxxxxxxxxxxxx ");
+		// System.out.print(" >> ");
+		//
 	}
 }

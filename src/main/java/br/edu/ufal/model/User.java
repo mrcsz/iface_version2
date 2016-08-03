@@ -26,7 +26,7 @@ public class User {
 	private String dateBirth;
 	private String password;
 	private String sex;
-	Profile profile;
+	public Profile profile = new Profile();
 	
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	List<Solicitation> solicitation = new ArrayList<Solicitation>();
