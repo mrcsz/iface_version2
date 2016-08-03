@@ -1,5 +1,7 @@
 package br.edu.ufal.view;
 
+import javax.persistence.criteria.CriteriaBuilder.In;
+
 import br.edu.ufal.model.User;
 
 public class Screen {
@@ -50,7 +52,7 @@ public class Screen {
 	//
 	 public static void displayInitialMenu() {
 	 System.out.println(" #################################");
-	 System.out.println("| BEM VINDO AO IFACE              |");
+	 System.out.println("|       BEM VINDO AO IFACE        |");
 	 System.out.println("|                                 |");
 	 System.out.println("| 1 - Perfil                      |");
 	 System.out.println("| 2 - Amigos                      |");
@@ -118,26 +120,29 @@ public class Screen {
 	// }
 	//
 	
-	//
-	// public void opcoesDeEdicaoPerfil() {
-	//
-	// System.out.println(" ------------------ EDITAR -------------------");
-	// System.out.println("| ** O que voce deseja editar? ** |");
-	// System.out.println("| 1 - nome/sobrenome |");
-	// System.out.println("| 2 - sexo |");
-	// System.out.println("| 3 - Dt Nascimento |");
-	// System.out.println("| 4 - contato |");
-	// System.out.println("| 5 - status |");
-	// System.out.println("| 6 - Informacoes Profisionais |");
-	// System.out.println("| 7 - Informacoes Educacionais |");
-	// System.out.println("| 8 - voltar |");
-	// System.out.println("| |");
-	// System.out.println("| obs.: para editar login(email)/senha va |");
-	// System.out.println("| para \"6 - configuracoes\" na tela inicial |");
-	// System.out.println(" xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
-	// System.out.print(" >> ");
-	//
-	// }
+	
+	 public static void profileEditionOption() {
+	
+	 System.out.println(" ------------------ EDITAR -------------------");
+	 System.out.println("|      ** O que voce deseja editar? **        |");
+	 System.out.println("| 1 - nome                                    |");
+	 System.out.println("| 2 - sobrenome                               |");
+	 System.out.println("| 3 - sexo                                    |");
+	 System.out.println("| 4 - Dt Nascimento                           |");
+	 System.out.println("| 5 - contato                                 |");
+	 System.out.println("| 6 - status                                  |");
+	 System.out.println("| 7 - Informacoes Profisionais                |");
+	 System.out.println("| 8 - Informacoes Educacionais                |");
+	 System.out.println("| 9 - voltar                                  |");
+	 System.out.println("|                                             |");
+	 System.out.println("| obs.: para editar login(email)/senha va     |");
+	 System.out.println("| para \"6 - configuracoes\" na tela inicial  |");
+	 System.out.println(" xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+	 System.out.print(" >> ");
+	
+	 }
+	 
+	 
 	//
 	// public void atualizadoComSucesso(){
 	// System.out.println(" -----------------------------------");
@@ -318,12 +323,38 @@ public class Screen {
 	}
 
 	public static void profileOption() {
-		//
-		// System.out.println(" xxxxxxxxxxxxxxxxxxxxxxxxx ");
-		// System.out.println("| 1 - Editar perfil |");
-		// System.out.println("| 2 - Voltar |");
-		// System.out.println(" xxxxxxxxxxxxxxxxxxxxxxxxx ");
-		// System.out.print(" >> ");
-		//
+
+		 System.out.println(" xxxxxxxxxxxxxxxxxxxxxxxxx ");
+		 System.out.println("| 1 - Editar perfil       |");
+		 System.out.println("| 2 - Voltar              |");
+		 System.out.println(" xxxxxxxxxxxxxxxxxxxxxxxxx ");
+		 System.out.print(" >> ");
+
 	}
+
+	public static void getContactUser() {
+		System.out.print("   Contato: ");
+	}
+	
+	public static void getStatusUser() {
+		System.out.print("   status: ");
+	}
+
+	public static void getCompanyName() {
+		System.out.println("   Empresa: ");
+	}
+
+	public static void getFunction() {
+		System.out.println("   Funcao: ");
+	}
+
+	public static void getInitialDate() {
+		System.out.println("   Data de inicio: ");
+	}
+
+	public static void getFinalDate() {
+		System.out.println("   Data de fim(opcional): ");
+	}
+	
+	
 }

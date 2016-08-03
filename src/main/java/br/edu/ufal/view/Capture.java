@@ -47,4 +47,39 @@ public class Capture {
 		Screen.getDateBirthUser();
 		return input.next();
 	}
+
+	public static String contactUser() {
+		Screen.getContactUser();
+		return input.next();
+	}
+	
+	public static String statusUser() {
+		Screen.getStatusUser();
+		return input.next();
+	}
+
+	public static String companyName() {
+		Screen.getCompanyName();
+		return input.next();
+	}
+
+	public static String function() {
+		Screen.getFunction();
+		return input.next();
+	}
+
+	public static String dateInitial() {
+		Screen.getInitialDate();
+		return input.next();
+	}
+
+	public static String dateFinal() {
+		Screen.getFinalDate();
+		return input.next();
+	}
+
+	public static String courseName() {
+	//	Screen.getCourseName();
+		return input.next();
+	}
 }

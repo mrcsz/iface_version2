@@ -54,7 +54,7 @@ public class Controller {
 		user.setDateBirth(dateBirth);
 		user.setSex(sex);
 
-		if(!crudImpl.checkForEqualEmail(email)){
+		if (!crudImpl.checkForEqualEmail(email)) {
 			crudImpl.addInstance(user);
 			Screen.registrationSucessfully();
 			return 1;
@@ -75,6 +75,43 @@ public class Controller {
 	}
 
 	public static void printProfile(int idUser) {
-			Screen.profile(crudImpl.getInstance(idUser));
+		Screen.profile(crudImpl.getInstance(idUser));
+	}
+
+	public static void Edition(int idUser, String field) {
+		
+		User user = crudImpl.getInstance(idUser);
+		
+		if(field == "name"){
+			user.setName(Capture.nameUser());
+		} else if(field == "lastName"){
+			user.setLastName(Capture.lastNameUser());
+		} else if(field == "sex"){
+			user.setSex(Capture.sexUser());
+		} else if(field == "dateBirth"){
+			user.setDateBirth(Capture.dateBirthUser());
+		} else if(field == "contact"){
+			user.profile.setContact(Capture.contactUser());
+		} else if(field == "status"){
+			user.profile.setStatus(Capture.statusUser());
+		}
+	}
+
+	public static void EditionInformationProfessional(int idUser) {
+		User user = crudImpl.getInstance(idUser);
+		
+		user.profile.professionalInformation.setCompanyName(Capture.companyName());
+		user.profile.professionalInformation.setFunction(Capture.function());
+		user.profile.professionalInformation.setInitialDate(Capture.dateFinal());
+		user.profile.professionalInformation.setFinalDate(Capture.dateInitial());
+	}
+
+	public static void EditionInformationEducational(int idUser) {
+		//User user = crudImpl.getInstance(idUser);
+		
+		//user.profile.professionalInformation.setCompanyName(Capture.courseName());
+		//user.profile.professionalInformation.setFunction(Capture.yearConclusion());
+		//user.profile.professionalInformation.setInitialDate(Capture.institutionalName());
+		
 	}
 }

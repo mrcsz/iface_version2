@@ -29,60 +29,59 @@ public class App {
 						//LOOP DE NAVEGACAO
 
 						Screen.displayInitialMenu();
-//						//MENU INICIAL
-//
+						//MENU INICIAL
+
 						switch(Capture.getOptionInt()){
-//						//NAVEGACAO	
-//
-//
+						//NAVEGACAO	
+
+
 						case 1://PERFIL
 							Controller.printProfile(idUser);
 
 							Screen.profileOption();
-//
-//							switch(in.obterOpcao()){ //OPCOES EDITAR/VOLTAR
-//
-//							case 1://EDITAR PERFIL
-//
-//								control.gerUsers.ImprimePerfil(codUserAtual);
-//								out.opcoesDeEdicaoPerfil();
-//
-//								switch(in.obterOpcao()){ //O QUE SE DESEJA EDITAR
-//
-//								case 1: //NOME / SOBRENOME
-//									control.gerUsers.editarNome(codUserAtual);
-//									break;
-//								case 2: //SEXO
-//									control.gerUsers.editarSexo(codUserAtual);
-//									break;
-//								case 3: //DT NASC
-//									control.gerUsers.editarDataNasc(codUserAtual);
-//									break;
-//								case 4: //CONTATO
-//									control.gerUsers.editarContato(codUserAtual);
-//									break;
-//								case 5: //STATUS
-//									control.gerUsers.editarStatus(codUserAtual);
-//									break;
-//								case 6: //INFORMACOES PROFISSIONAIS
-//
-//									control.gerUsers.editarInfProf(codUserAtual);
-//
-//									break;
-//								case 7: //INFORMACOES EDUCACIONAIS
-//
-//									control.gerUsers.editarInfEduc(codUserAtual);
-//
-//									break;
-//								default: // VOLTAR
-//									//QUALQUER OPCAO FORA DO INTERVALO VOLTA
-//								}
-//
-//								break;
-//							default: //VOLTAR
-//								//VOLTA COM QUALQUER VALOR DIFERENTE DO 1
-//
-//							}
+
+							switch(Capture.getOptionInt()){ //OPCOES EDITAR/VOLTAR
+
+							case 1://EDITAR PERFIL
+
+								Screen.profileEditionOption();
+
+								switch(Capture.getOptionInt()){ //O QUE SE DESEJA EDITAR
+
+								case 1: //NOME
+									Controller.Edition(idUser, "name");
+									break;
+								
+								case 2: //SOBRENOME
+									Controller.Edition(idUser, "lastName");
+									break;
+								case 3: //SEXO
+									Controller.Edition(idUser, "sex");
+									break;
+								case 4: //DT NASC
+									Controller.Edition(idUser, "dateBirth");
+									break;
+								case 5: //CONTATO
+									Controller.Edition(idUser, "contact");
+									break;
+								case 6: //STATUS
+									Controller.Edition(idUser, "status");
+									break;
+								case 7: //INFORMACOES PROFISSIONAIS
+									Controller.EditionInformationProfessional(idUser);
+									break;
+								case 8: //INFORMACOES EDUCACIONAIS
+									Controller.EditionInformationEducational(idUser);
+									break;
+								default: // VOLTAR
+									//QUALQUER OPCAO FORA DO INTERVALO VOLTA
+								}
+
+								break;
+							default: //VOLTAR
+								//VOLTA COM QUALQUER VALOR DIFERENTE DO 1
+
+							}
 //
 //							break;
 //						case 2: //AMIGOS
@@ -169,7 +168,7 @@ public class App {
 //										bool = false;
 //									}
 //								}
-//								
+								
 //								break;
 //							case 2://CAIXA DE MENSAGENS
 //								
