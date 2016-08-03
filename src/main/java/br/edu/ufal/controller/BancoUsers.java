@@ -2,31 +2,8 @@ package br.edu.ufal.controller;
 
 
 public class BancoUsers{
-
-//	static public Scanner input = new Scanner(System.in);
-//	validateSwitchOption in = new validateSwitchOption();
-//	Screen out = new Screen();
-//	private ArrayList<Usuarios> users = new ArrayList<Usuarios>();
-//	ValidateEmail validarEmail = new ValidateEmail();
-//	Datas datas = new Datas();
-//	ArrayList<Chat> chats = new ArrayList<Chat>();
-//
-//	public void addUserBanco(Usuarios user){
-//		users.add(user);
-//	}
-//
-//	public int busca(String email, String senha) {
-//
-//		for(int i = 0; i < users.size(); i++){
-//			Usuarios user = users.get(i);
-//
-//			if(email.equals(user.getEmail()) && senha.equals(user.getSenha())){
-//				return user.getId();
-//			}
-//		}
-//
-//		return -1;
-//	}
+	
+	
 //
 //	public int iSusuarioCadastrado(int id){
 //		for(int i = 0; i < users.size(); i++){
@@ -39,33 +16,6 @@ public class BancoUsers{
 //		return -1;
 //	}
 //
-//	public void ImprimePerfil(int codUserAtual){
-//		Usuarios user = users.get(codUserAtual);	
-//
-//		System.out.println(     " ---------------- PERFIL ------------------\n"
-//				+ "\n    Nome: " + user.getNome()
-//				+ "\n    Sobrenome: " + user.getSobrenome() 
-//				+ "\n    Email: " + user.getEmail() 
-//				+ "\n    Senha: " + user.getSenha()
-//				+ "\n    Sexo: " + user.getSexo()
-//				+ "\n    Dt Nasc: " + user.getNasc()  
-//				+ "\n    Contato: " + user.perfil.getTelefone()   
-//				+ "\n    Status: " + user.perfil.getStatus()
-//				+ "\n\n  ------- Informacoes Profissionais -------\n"
-//				+ "\n    Nome da Empresa: " + user.perfil.trabalho.getNomeEmpresa()
-//				+ "\n    Funcao exercida: " + user.perfil.trabalho.getFuncao()
-//				+ "\n    Dt Inicio: " + user.perfil.trabalho.getInicio()
-//				+ "\n    Dt Fim: " + user.perfil.trabalho.getFim()
-//				+ "\n\n -------- Informacoes Educacionais ---------\n"
-//				+ "\n    Curso: " + user.perfil.unidadeEducacional.getCurso()
-//				+ "\n    Nome da Instituicao: " + user.perfil.unidadeEducacional.getNomeInstituicao()
-//				+ "\n    Ano de Conclusao: " + user.perfil.unidadeEducacional.getAnoConclusao()
-//				+ "\n ------------------------------------------- \n");
-//
-//
-//
-//
-//	}
 //
 //	public void editarNome(int codUserAtual) {
 //		Usuarios user = users.get(codUserAtual);

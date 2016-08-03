@@ -7,8 +7,11 @@ import br.edu.ufal.validation.ValidationDate;
 import br.edu.ufal.validation.ValidationEmail;
 import br.edu.ufal.view.Capture;
 import br.edu.ufal.view.PrintError;
+import br.edu.ufal.view.Screen;
 
 public class Controller {
+
+	static CRUDImpl crudImpl = new CRUDImpl();
 
 	public static int addUser() {
 
@@ -43,7 +46,6 @@ public class Controller {
 			return -1;
 		}
 
-		CRUDImpl crudImpl = new CRUDImpl();
 		User user = new User();
 		user.setName(name);
 		user.setLastName(lastName);
@@ -51,46 +53,28 @@ public class Controller {
 		user.setPassword(password);
 		user.setDateBirth(dateBirth);
 		user.setSex(sex);
-		
-		crudImpl.addInstance(user);
-		return 1;
+
+		if(!crudImpl.checkForEqualEmail(email)){
+			crudImpl.addInstance(user);
+			Screen.registrationSucessfully();
+			return 1;
+		} else {
+			PrintError.msgEmailIsAlreadyRegistered();
+			return -1;
+		}
 	}
 
 	public static int authenticationLogin() {
-		
+
 		String email = Capture.emailUser();
-		
+
 		String password = Capture.passwordUser();
 
-		CRUDImpl crudImpl = new CRUDImpl();
 		return crudImpl.autheticationUser(email, password);
-		
+
 	}
-	//
-	//
-	// private String validaDados(String nome, String email, String sexo, String
-	// nasc, String senha) {
-	//
-	// if(nome.equals("")) return out.msgErroNomeNull();
-	// else if(!ValidarEmail.validar(email)) return out.msgErroEmailInvalido();
-	// else if(!(sexo.equalsIgnoreCase("M") || sexo.equalsIgnoreCase("F")))
-	// return out.msgSexoInvalido();
-	// else if(!validarData.validarDataNasc(nasc)) return
-	// out.msgErroDataIvalida();
-	// else if(senha.equals("")) return out.msgErroSenhaNula();
-	//
-	// return "OK";
-	// }
-	//
-	// public void init() {
-	//
-	// gerUsers.addUserBanco(new Usuarios(this.id_gerator++, "Marcos", "Souza",
-	// "mrc@ic.br", "20/12/1990", "123", "M"));
-	// gerUsers.addUserBanco(new Usuarios(this.id_gerator++, "Elly", "Souza",
-	// "eli@ic.br", "16/06/1991", "123", "F"));
-	// gerUsers.addUserBanco(new Usuarios(this.id_gerator++, "Jose", "Monteiro",
-	// "jm@ic.br", "20/07/1970", "123", "M"));
-	// gerUsers.addUserBanco(new Usuarios(this.id_gerator++, "Diogo", "Paes",
-	// "dp@ic.br", "24/11/1982", "123", "M"));
-	// }
+
+	public static void printProfile(int idUser) {
+			Screen.profile(crudImpl.getInstance(idUser));
+	}
 }

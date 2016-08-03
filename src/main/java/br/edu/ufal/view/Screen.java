@@ -1,5 +1,7 @@
 package br.edu.ufal.view;
 
+import br.edu.ufal.model.User;
+
 public class Screen {
 
 	public static void menuDisplayLogin() {
@@ -16,6 +18,28 @@ public class Screen {
 	 System.out.println(" -------------------------------");
 	 System.out.println("|     Encerrando aplicativo     |");
 	 System.out.println(" -------------------------------");
+	 }
+	 
+	 public static void profile(User user){
+		 System.out.println( " ---------------- PERFIL ------------------\n");
+		 System.out.println( " Nome: " + user.getName());
+		 System.out.println( " Sobrenome: " + user.getLastName());
+		 System.out.println( " Email: " + user.getEmail());
+		 System.out.println( " Senha: " + user.getPassword());
+		 System.out.println( " Sexo: " + user.getSex());
+		 System.out.println( " Dt Nasc: " + user.getDateBirth());
+		 System.out.println( " Contato: " + user.getProfile().getContact());
+		 System.out.println( " Status: " + user.getProfile().getStatus());
+		 System.out.println( "\n ------- Informacoes Profissionais -------\n");
+		 System.out.println( " Nome da Empresa: " + user.getProfile().getProfessionalInformation().getCompanyName());
+		 System.out.println( " Funcao exercida: " + user.getProfile().getProfessionalInformation().getFunction());
+		 System.out.println( " Dt Inicio: " + user.getProfile().getProfessionalInformation().getInitialDate());
+		 System.out.println( " Dt Fim: " + user.getProfile().getProfessionalInformation().getFinalDate());
+		 System.out.println( "\n -------- Informacoes Educacionais ---------\n");
+		 System.out.println( " Curso: " + user.getProfile().getEducationalInformation().getCourse());
+		 System.out.println( " Nome da Instituicao: " + user.getProfile().getEducationalInformation().getInstitutionalName());
+		 System.out.println( " Ano de Conclusao: " + user.getProfile().getEducationalInformation().getYearConclusion());
+		 System.out.println( " ------------------------------------------- \n");
 	 }
 	
 	// public void msgVoltando() {
@@ -39,15 +63,8 @@ public class Screen {
 	 System.out.println(" xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
 	 System.out.print(" >> ");
 	 }
-	//
-	// public void cadastroRealizadoComSucesso() {
-	//
-	// System.out.println(" -----------------------------------");
-	// System.out.println("| Cadastro realizado com sucesso |");
-	// System.out.println(" -----------------------------------");
-	//
-	// }
-	//
+
+	 
 	// public void msgAcessoNegado() {
 	// System.out.println(" -----------------");
 	// System.out.println("| Acesso Negado! |");
@@ -299,5 +316,12 @@ public class Screen {
 		 System.out.println(" xxxxxxxxxxxxxxxxxxxxxxxxx");
 		 System.out.print(" >> ");
 				
+	}
+
+	public static void registrationSucessfully() {
+		System.out.println(" -----------------------------------");
+		System.out.println("|  Cadastro realizado com sucesso   |");
+		System.out.println(" -----------------------------------");
+
 	}
 }

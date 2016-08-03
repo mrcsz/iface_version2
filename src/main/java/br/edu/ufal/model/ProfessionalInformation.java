@@ -12,10 +12,10 @@ public class ProfessionalInformation{
 	
 	
 	public ProfessionalInformation() {
-		this.initialDate = "";
-		this.finalDate = "";
-		this.companyName = "";
-		this.function = "";
+		this.initialDate = "-";
+		this.finalDate = "-";
+		this.companyName = "-";
+		this.function = "-";
 	}
 	
 	public String getInitialDate() {

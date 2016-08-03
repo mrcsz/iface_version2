@@ -13,8 +13,8 @@ public class Profile{
 	public Profile() {
 		this.professionalInformation = new ProfessionalInformation();
 		this.educationalInformation = new EducationalInformation();
-		this.status = "";
-		this.contact = "";
+		this.status = "-";
+		this.contact = "-";
 	}
 
 	public ProfessionalInformation getProfessionalInformation() {

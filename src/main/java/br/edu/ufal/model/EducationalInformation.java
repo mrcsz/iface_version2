@@ -10,9 +10,9 @@ public class EducationalInformation {
 	
 	public EducationalInformation() {
 		
-		this.course = "";
-		this.yearConclusion = "";
-		this.institutionalName = "";
+		this.course = "-";
+		this.yearConclusion = "-";
+		this.institutionalName = "-";
 	}
 
 	public String getCourse() {

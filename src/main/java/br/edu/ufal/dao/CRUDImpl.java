@@ -120,6 +120,56 @@ public class CRUDImpl{
 		return -1;
 	}
 	
+	public User getInstance(int idUser) {
+		session = sessionFactory.openSession();
+		
+		try {
+			session.beginTransaction();
+			
+			@SuppressWarnings("deprecation")
+			Criteria crit = session.createCriteria(User.class);
+			crit.add(Restrictions.eq("id", idUser));
+			crit.setMaxResults(1);
+			
+			User user = (User) crit.uniqueResult();
+			
+			session.close();
+			
+				return user;
+			
+		} catch (HibernateException e) {
+			e.printStackTrace();
+			session.getTransaction().rollback();
+
+		}	
+		return null;
+	}
+
+	public boolean checkForEqualEmail(String email) {
+		session = sessionFactory.openSession();
+		
+		try {
+			session.beginTransaction();
+			
+			@SuppressWarnings("deprecation")
+			Criteria crit = session.createCriteria(User.class);
+			crit.add(Restrictions.eq("email", email));
+			crit.setMaxResults(1);
+			
+			User user = (User) crit.uniqueResult();
+			
+			session.close();
+
+			return user != null;
+			
+		} catch (HibernateException e) {
+			e.printStackTrace();
+			session.getTransaction().rollback();
+
+		}	
+		return false;		
+	}
+	
 }
 
 

@@ -26,7 +26,7 @@ public class User {
 	private String dateBirth;
 	private String password;
 	private String sex;
-	Profile perfil;
+	Profile profile;
 	
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	List<Solicitation> solicitation = new ArrayList<Solicitation>();
@@ -45,12 +45,12 @@ public class User {
 		this.id = id;
 	}
 
-	public Profile getPerfil() {
-		return perfil;
+	public Profile getProfile() {
+		return profile;
 	}
 
-	public void setPerfil(Profile perfil) {
-		this.perfil = perfil;
+	public void setProfile(Profile profile) {
+		this.profile = profile;
 	}
 
 	public List<Solicitation> getSolicitation() {
