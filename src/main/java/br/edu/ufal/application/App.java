@@ -24,12 +24,10 @@ public class App {
 				int idUser = Controller.authenticationLogin();
 				if(idUser != -1){
 					//USER AUTORIZADO
-					
 
 					while(loop){
 						//LOOP DE NAVEGACAO
 
-						System.out.println("idUser " + idUser);
 						Screen.displayInitialMenu();
 //						//MENU INICIAL
 //
@@ -38,7 +36,7 @@ public class App {
 //
 //
 						case 1://PERFIL
-//							control.gerUsers.ImprimePerfil(codUserAtual);
+							Controller.printProfile(idUser);
 
 //							out.exibeOpcoesPerfil();
 //
