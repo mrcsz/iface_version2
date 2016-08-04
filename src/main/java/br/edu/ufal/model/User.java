@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
@@ -41,6 +42,10 @@ public class User {
 	@JoinTable(name = "requestFriendship", joinColumns = @JoinColumn(name = "user1"), inverseJoinColumns = @JoinColumn(name = "user2"))
 	protected List<User> friendRequest = new ArrayList<User>();
 		
+	@OneToMany
+	protected List<Chat> chat = new ArrayList<Chat>();
+	
+	
 	
 	public int getId() {
 		return id;
