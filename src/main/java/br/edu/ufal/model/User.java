@@ -4,6 +4,7 @@ package br.edu.ufal.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -42,9 +43,23 @@ public class User {
 	@JoinTable(name = "requestFriendship", joinColumns = @JoinColumn(name = "user1"), inverseJoinColumns = @JoinColumn(name = "user2"))
 	protected List<User> friendRequest = new ArrayList<User>();
 		
-	@OneToMany
+	
+	@OneToMany(cascade = CascadeType.PERSIST)
+	@LazyCollection(LazyCollectionOption.FALSE)
 	protected List<Chat> chat = new ArrayList<Chat>();
 	
+	
+	public List<Chat> getChat() {
+		return chat;
+	}
+
+	public void setChat(Chat chat) {
+		this.chat.add(chat);
+	}
+
+	public void setFriendRequest(User friendRequest) {
+		this.friendRequest.add(friendRequest);
+	}
 	
 	
 	public int getId() {
@@ -81,10 +96,6 @@ public class User {
 
 	public List<User> getFriendRequest() {
 		return friendRequest;
-	}
-
-	public void setFriendRequest(User solicitation) {
-		this.friendRequest.add(solicitation);
 	}
 
 	public String getLastName() {

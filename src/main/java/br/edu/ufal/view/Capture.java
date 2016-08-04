@@ -113,4 +113,9 @@ public class Capture {
 		Screen.getNameUser();
 		return input.nextLine();
 	}
+
+	public static String writeMessage() {
+		Screen.getMsg();
+		return input.nextLine();
+	}
 }

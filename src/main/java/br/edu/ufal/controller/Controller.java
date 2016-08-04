@@ -4,6 +4,8 @@ import java.util.Iterator;
 import java.util.List;
 
 import br.edu.ufal.dao.CRUDImpl;
+import br.edu.ufal.model.Chat;
+import br.edu.ufal.model.Msg;
 import br.edu.ufal.model.User;
 import br.edu.ufal.validation.ValidationData;
 import br.edu.ufal.validation.ValidationDate;
@@ -142,9 +144,53 @@ public class Controller {
 		}
 	}
 
-	public static int sendMsg() {
-
-		// ENVIAR NOVA MENSAGEM retorna -1 se der erro
+	public static int sendMsg(User user) {
+		boolean bool = true;
+		listFriends(user);
+		
+		int idFriend = Capture.getIdSolicitation();
+		String msgContent = Capture.writeMessage();
+		
+		List<Chat> chats = user.getChat();
+		
+		User userFriend = crudImpl.getInstanceId(idFriend);
+		List<Chat> chats2 = userFriend.getChat();
+		
+		Iterator<Chat> itr = chats.iterator();
+		while (itr.hasNext()) {
+			Chat element = (Chat) itr.next();
+			if(element.getIdFriend() == idFriend){
+				Iterator<Chat> it = chats2.iterator();
+				while(it.hasNext()){
+					Chat elem = (Chat) it.next();
+					if(element.getIdFriend() == user.getId()){
+						Msg msg = new Msg(user.getId(), user.getName(), msgContent);
+						element.getMsgs().add(msg);
+						elem.getMsgs().add(msg);
+						
+						crudImpl.addInstance(msg);
+						bool = false;
+					}
+				}
+			}
+		}
+		
+		if(bool){
+			Msg msg = new Msg(user.getId(), user.getName(), msgContent);
+			
+			Chat chat = new Chat();
+			chat.setIdUser(user.getId());
+			chat.setIdFriend(idFriend);
+			chat.setMsgs(msg);
+			
+			crudImpl.addInstance(chat, msg);
+			user.getChat().add(chat);
+			userFriend.getChat().add(chat);
+			
+		}
+		
+		crudImpl.updateInstance(user);
+		
 		return 0;
 	}
 

@@ -374,7 +374,7 @@ public class Screen {
 	}
 
 	public static void getIdSolicilitation() {
-		System.out.print("Id do Amigo a convidar: ");
+		System.out.print("Id: ");
 	}
 
 	public static void menuCommunity() {
@@ -393,5 +393,13 @@ public class Screen {
 		 System.out.println("| 2 - Excluir msg       |");
 		 System.out.println(" xxxxxxxxxxxxxxxxxxxxxxx");
 		 System.out.print(" >> ");
+	}
+
+	public static void sendMsg() {
+		System.out.print("Id do destinario: ");
+	}
+
+	public static void getMsg() {
+		System.out.print("msg: ");
 	}
 }

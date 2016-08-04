@@ -3,11 +3,15 @@ package br.edu.ufal.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 @Entity
 public class Chat {
@@ -16,15 +20,16 @@ public class Chat {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	int id;
 
+	@OneToMany(cascade = CascadeType.PERSIST)
+	@LazyCollection(LazyCollectionOption.FALSE)
+	List<Msg> msgs = new ArrayList<Msg>();
+	
 	public void setMsgs(List<Msg> msgs) {
 		this.msgs = msgs;
 	}
 
 	int idUser;
 	int idFriend;
-
-	@OneToMany
-	List<Msg> msgs = new ArrayList<Msg>();
 
 	public int getId() {
 		return id;

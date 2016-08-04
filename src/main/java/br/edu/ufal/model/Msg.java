@@ -13,6 +13,19 @@ public class Msg {
 	int id;
 
 	int sender;
+	String senderName;
+	
+	public Msg() {
+		super();
+	}
+
+	public Msg( int sender, String senderName, String content) {
+		super();
+		this.sender = sender;
+		this.senderName = senderName;
+		this.content = content;
+	}
+
 	String content;
 
 	public int getSender() {

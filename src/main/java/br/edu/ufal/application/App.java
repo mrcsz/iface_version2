@@ -162,8 +162,7 @@ public class App {
 								boolean bool = true;
 								while(bool){
 									
-									//Controller.listFriends(user);
-									if(Controller.sendMsg()  != -1){
+									if(Controller.sendMsg(user)  != -1){
 										Screen.otherMsg();
 										
 										if(Capture.getOptionInt() != 1){
