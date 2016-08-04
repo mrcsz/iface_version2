@@ -1,6 +1,7 @@
 package br.edu.ufal.application;
 
 import br.edu.ufal.controller.Controller;
+import br.edu.ufal.model.User;
 import br.edu.ufal.view.Capture;
 import br.edu.ufal.view.Screen;
 
@@ -21,8 +22,8 @@ public class App {
 
 			case 1://LOGIN
 				
-				int idUser = Controller.authenticationLogin();
-				if(idUser != -1){
+				User user = Controller.authenticationLogin();
+				if(user != null){
 					//USER AUTORIZADO
 
 					while(loop){
@@ -36,7 +37,7 @@ public class App {
 
 
 						case 1://PERFIL
-							Controller.printProfile(idUser);
+							Controller.printProfile(user);
 
 							Screen.profileOption();
 
@@ -49,29 +50,29 @@ public class App {
 								switch(Capture.getOptionInt()){ //O QUE SE DESEJA EDITAR
 
 								case 1: //NOME
-									Controller.Edition(idUser, "name");
+									Controller.Edition(user, "name");
 									break;
 								
 								case 2: //SOBRENOME
-									Controller.Edition(idUser, "lastName");
+									Controller.Edition(user, "lastName");
 									break;
 								case 3: //SEXO
-									Controller.Edition(idUser, "sex");
+									Controller.Edition(user, "gender");
 									break;
 								case 4: //DT NASC
-									Controller.Edition(idUser, "dateBirth");
+									Controller.Edition(user, "dateBirth");
 									break;
 								case 5: //CONTATO
-									Controller.Edition(idUser, "contact");
+									Controller.Edition(user, "contact");
 									break;
 								case 6: //STATUS
-									Controller.Edition(idUser, "status");
+									Controller.Edition(user, "status");
 									break;
 								case 7: //INFORMACOES PROFISSIONAIS
-									Controller.EditionInformationProfessional(idUser);
+									Controller.EditionInformationProfessional(user);
 									break;
 								case 8: //INFORMACOES EDUCACIONAIS
-									Controller.EditionInformationEducational(idUser);
+									Controller.EditionInformationEducational(user);
 									break;
 								default: // VOLTAR
 									//QUALQUER OPCAO FORA DO INTERVALO VOLTA
@@ -91,150 +92,156 @@ public class App {
 							switch(Capture.getOptionInt()){
 							case 1: //SOLICITACOES DE AMIZADE
 								
-								//control.gerUsers.listaSolicitacoesAmizade(codUserAtual);
-								//Controller.listSolicitationFriendship(idUser);
+								Controller.listRequest(user);
 								
-//								out.menuResponderSolicitacao();
-//
-//								switch(in.obterOpcao()){
-//
-//								case 1: //ACEITAR CONVITE
-//
-//									control.gerUsers.aceitarConviteAmizade(codUserAtual);
-//
-//									break;
-//								case 2: //REJEITAR CONVITE
-//
-//									control.gerUsers.rejeitarConviteAmizade(codUserAtual);
-//
-//									break;
-//								default:	
-//									//VOLTAR
-//								}
-//
-//								break;
+								Screen.aceptFriend();
+								
+								switch(Capture.getOptionInt()){
+
+								case 1: //ACEITAR CONVITE
+
+									Controller.aceptRequest(user);
+									
+									break;
+								case 2: //REJEITAR CONVITE
+									
+									Screen.aceptFriend();
+									
+									
+									
+									Controller.removeRequest(user);
+									
+									break;
+								default:	
+									//VOLTAR
+								}
+
+								break;
 							case 2: //BUSCAR AMIGOS
 								
-								Controller.listUsers(idUser);
+								Controller.searchUser();
+								
 								
 								Screen.menuAddFriend();
 
 								switch(Capture.getOptionInt()){
 								case 1: //ENVIAR SOLICITACAO
 
-									Controller.sendSolicitation(idUser);
+									Controller.sendRequest(user);
 
 									break;
 								default:
 									//VOLTAR
 								}
-//
-//								break;
-//							case 3: //LISTAR AMIGOS
-//
-//								control.gerUsers.listarAmigos(codUserAtual);
-//
-//								break;
-//							default:		
-//								//VOLTAR
+
+								break;
+							case 3: //LISTAR AMIGOS
+
+								Controller.listFriends(user);
+								break;
+							default:		
+								//VOLTAR
 							}
-//
-//
-//							break;
+
+
+							break;
 						case 3: //COMUNIDADES
-//
-//
-//
-//
-//
-//							break;
-//						case 4: //CHAT(private)
-//
-//							out.menuMsgs();
-//							
-//							switch(in.obterOpcao()){
-//							case 1: //ENVIAR MENSAGEM
-//								boolean bool = true;
-//								while(bool){
-//									
-//									control.gerUsers.listarAmigos(codUserAtual);
-//									
-//									if(control.gerUsers.enviarMsg(codUserAtual)  != -1){
-//										out.outraMsg();
-//										
-//										if(in.obterOpcao() != 1){
-//											bool = false;
-//										}
-//									} else {
-//										bool = false;
-//									}
-//								}
+							
+							Screen.menuCommunity();
+
+							
+
+
+							break;
+						case 4: //CHAT(private)
+
+							Screen.menuMsgs();
+							
+							switch(Capture.getOptionInt()){
+							case 1: //ENVIAR MENSAGEM
+								boolean bool = true;
+								while(bool){
+									
+									//Controller.listFriends(user);
+									if(Controller.sendMsg()  != -1){
+										Screen.otherMsg();
+										
+										if(Capture.getOptionInt() != 1){
+											bool = false;
+										}
+									} else {
+										bool = false;
+									}
+								}
 								
-//								break;
-//							case 2://CAIXA DE MENSAGENS
-//								
-//								boolean temMsg = control.gerUsers.exibirCaixaEntrada(codUserAtual);
-//								
-//								
-//								if(temMsg){
-//									out.menuCxEntrada(); 
-//								
-//									switch(in.obterOpcao()){
-//									case 1: //SELECIONAR CONVERSA
-//											
-//										control.gerUsers.exibirConversa(codUserAtual);
-//										
-//										break;
-//									default:
-//										
-//										//VOLTAR
-//								
-//									} 
-//								} else {
-//									out.CaixaDeMsgsVazia();
-//								}
-//								
-//								break;
-//							case 3://LIMPAR HISTORICO
-//								
-//								control.gerUsers.limparHistorico(codUserAtual);
-//								
-//								break;
-//							default:
-//								//VOLTAR
-//							}
-//							
-//							break;
-//						case 5: //BUSCAR USUARIO
-//
-//							
-//
-//							break;
-//
-//						case 6: //CONFIGURACOES
-//
-//							out.menuConfig();
-//							switch(in.obterOpcao()){
-//							case 1://ALTERAR SENHA
-//
-//								//control.gerUsers.alterarSenha(codUserAtual);
-//							
-//								break;		
-//							case 2:
-//								//ALTERAR EMAIL
-//								
-//								//control.gerUsers.alterarEmail(codUserAtual);
-//								
-//								break;
-//							case 3:
-//								//EXCLUIR CONTA
-//								
-//								//control.gerUsers.exluirConta(codUserAtual);
-//
-//								break;
-//							default:
-//								//VOLTAR
-//							}
+								break;
+							case 2://CAIXA DE MENSAGENS
+								
+								boolean haveMsg = Controller.msgBox();
+								
+								
+								if(haveMsg){
+									Screen.menuEntryBox(); 
+								
+									switch(Capture.getOptionInt()){
+									case 1: //SELECIONAR CONVERSA
+											
+										//Controller.()
+										//MostraConversa
+										break;
+									default:
+										
+										//VOLTAR
+								
+									} 
+								} else {
+									//Screen.boxText();
+									//vazia
+								}
+								
+								break;
+							case 3://LIMPAR HISTORICO
+								
+								//Controller.
+								//limpa historico
+								
+								break;
+							default:
+								//VOLTAR
+							}
+							
+							break;
+						case 5: //BUSCAR USUARIO
+
+							
+
+							break;
+
+						case 6: //CONFIGURACOES
+
+							Screen.menuSettings();
+							//configuracao
+							switch(Capture.getOptionInt()){
+							case 1://ALTERAR SENHA
+
+								//control.gerUsers.alterarSenha(codUserAtual);
+							
+								break;		
+							case 2:
+								//ALTERAR EMAIL
+								
+								//control.gerUsers.alterarEmail(codUserAtual);
+								
+								break;
+							case 3:
+								//EXCLUIR CONTA
+								
+								//control.gerUsers.exluirConta(codUserAtual);
+
+								break;
+							default:
+								//VOLTAR
+							}
 						case 7: //LOGOUT
 							loop = false;
 
@@ -248,7 +255,7 @@ public class App {
 						} //END SWITCH NAVEGACAO
 					} //END LOOP NAVEGACAO
 				} else { //END IF AUTORIZACAO USER
-//					//ACESSO NEGADO
+					//ACESSO NEGADO
 				}
 				break;
 

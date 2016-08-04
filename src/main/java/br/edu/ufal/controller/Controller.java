@@ -1,10 +1,9 @@
 package br.edu.ufal.controller;
 
+import java.util.Iterator;
 import java.util.List;
 
 import br.edu.ufal.dao.CRUDImpl;
-import br.edu.ufal.model.Friend;
-import br.edu.ufal.model.Solicitation;
 import br.edu.ufal.model.User;
 import br.edu.ufal.validation.ValidationData;
 import br.edu.ufal.validation.ValidationDate;
@@ -38,9 +37,9 @@ public class Controller {
 			return -1;
 		}
 
-		String sex = Capture.sexUser();
-		if (!ValidationData.validateSex(sex)) {
-			PrintError.invalidSex();
+		String gender = Capture.genderUser();
+		if (!ValidationData.validateGender(gender)) {
+			PrintError.invalidGender();
 			return -1;
 		}
 
@@ -56,7 +55,7 @@ public class Controller {
 		user.setEmail(email);
 		user.setPassword(password);
 		user.setDateBirth(dateBirth);
-		user.setSex(sex);
+		user.setGender(gender);
 
 		if (!crudImpl.checkForEqualEmail(email)) {
 			crudImpl.addInstance(user);
@@ -68,7 +67,7 @@ public class Controller {
 		}
 	}
 
-	public static int authenticationLogin() {
+	public static User authenticationLogin() {
 
 		String email = Capture.emailUser();
 
@@ -78,20 +77,18 @@ public class Controller {
 
 	}
 
-	public static void printProfile(int idUser) {
-		Screen.profile(crudImpl.getInstance(idUser));
+	public static void printProfile(User user) {
+		Screen.profile(user);
 	}
 
-	public static void Edition(int idUser, String field) {
-
-		User user = crudImpl.getInstance(idUser);
+	public static void Edition(User user, String field) {
 
 		if (field == "name") {
 			user.setName(Capture.nameUser());
 		} else if (field == "lastName") {
 			user.setLastName(Capture.lastNameUser());
-		} else if (field == "sex") {
-			user.setSex(Capture.sexUser());
+		} else if (field == "gender") {
+			user.setGender(Capture.genderUser());
 		} else if (field == "dateBirth") {
 			user.setDateBirth(Capture.dateBirthUser());
 		} else if (field == "contact") {
@@ -103,8 +100,7 @@ public class Controller {
 		crudImpl.updateInstance(user);
 	}
 
-	public static void EditionInformationProfessional(int idUser) {
-		User user = crudImpl.getInstance(idUser);
+	public static void EditionInformationProfessional(User user) {
 
 		user.profile.professionalInformation.setCompanyName(Capture.companyName());
 		user.profile.professionalInformation.setFunction(Capture.function());
@@ -114,8 +110,7 @@ public class Controller {
 		crudImpl.updateInstance(user);
 	}
 
-	public static void EditionInformationEducational(int idUser) {
-		User user = crudImpl.getInstance(idUser);
+	public static void EditionInformationEducational(User user) {
 
 		user.profile.professionalInformation.setCompanyName(Capture.courseName());
 		user.profile.professionalInformation.setFunction(Capture.yearConclusion());
@@ -124,48 +119,108 @@ public class Controller {
 		crudImpl.updateInstance(user);
 	}
 
-	public static void listUsers(int idUser) {
+	public static void sendRequest(User user) {
 
-		boolean fr = true;
-		List<User> list = crudImpl.listUsers(idUser);
-		for (User generalUser : list) {
-			Screen.PrintIdAndNomeUser(idUser, generalUser);
+		// A SER CONVIDADO
+		int idUserGuest = Capture.getIdSolicitation();
+		User userGuest = crudImpl.getInstanceId(idUserGuest);
 
-			List<Friend> friends = crudImpl.listFriends(idUser);
-			for (Friend friend : friends) {
+		userGuest.setFriendRequest(user);
 
-				if (friend.getId() == generalUser.getId()) {
-					System.out.println(" amigos\n");
-					fr = false;
-				}
-			}
+		crudImpl.updateInstance(userGuest);
 
-			List<Solicitation> solicitations = crudImpl.listSolicitations(idUser);
-			for (Solicitation solicitation : solicitations) {
+	}
 
-				if (solicitation.getIdUser() == generalUser.getId()) {
-					System.out.println(" Aguardando confimacao\n");
-					fr = false;
-				}
-			}
+	public static void listFriends(User user) {
+		
+		List<User> list = user.getFriend();
+		
+		Iterator<User> itr = list.iterator();
+		while (itr.hasNext()) {
+			User element = (User) itr.next();
+				System.out.println(element.getId() + " " + element.getName() + " " + element.getLastName());
+		}
+	}
 
-			if (fr) {
-				System.out.println(" adicionar\n");
+	public static int sendMsg() {
+
+		// ENVIAR NOVA MENSAGEM retorna -1 se der erro
+		return 0;
+	}
+
+	public static boolean msgBox() {
+
+		// LISTA AS MENSAGENS DA CAIXA DE TEXTO
+		return false;
+	}
+
+	public static void searchUser() {
+		List<User> users = crudImpl.getAllInstances();
+
+		String name = Capture.nameUser();
+
+		Iterator<User> itr = users.iterator();
+		while (itr.hasNext()) {
+			User element = (User) itr.next();
+			if (element.getName().equalsIgnoreCase(name)) {
+				System.out.println(element.getId() + " " + element.getName() + " " + element.getLastName());
 			}
 		}
 	}
 
-	public static void sendSolicitation(int idUser) {
-		
-		//BUSCA USUARIO ATUAL
-		User user = crudImpl.getInstance(idUser);
+	public static void listRequest(User user) {
 
-		//A SER CONVIDADO
-		int idUserGuest = Capture.getIdSolicitation();
-		User userGuest = crudImpl.getInstance(idUserGuest);
+		List<User> resquests = user.getFriendRequest();
+		Iterator<User> itr = resquests.iterator();
+		while (itr.hasNext()) {
+			User element = (User) itr.next();
+			System.out.println(element.getId() + " " + element.getName() + " " + element.getLastName());
+		}
+	}
+
+	public static void aceptRequest(User user) {
+		int idfriend = Capture.getIdSolicitation();
+
+		User userFriend = crudImpl.getInstanceId(idfriend);
+
+
+		user.setFriend(userFriend);
+		userFriend.setFriend(user);
+
+		crudImpl.updateInstance(user);
+		crudImpl.updateInstance(userFriend);
+
+		removeRequest(user, userFriend);
+	}
+
+	public static void removeRequest(User user, User userFriend) {
 		
-		Solicitation solicitation = new Solicitation(idUser, user.getName());
 		
-		crudImpl.sendSolicitation(solicitation);
+		List<User> requests = user.getFriendRequest();
+		
+		for(int i = 0; i < requests.size(); i++){
+			User request = requests.get(i);
+			if(request.getId() == userFriend.getId()){
+				requests.remove(i);
+				crudImpl.updateInstance(user);
+			}
+		}
+	}
+	
+public static void removeRequest(User user) {
+		
+	int idfriend = Capture.getIdSolicitation();
+
+	User userFriend = crudImpl.getInstanceId(idfriend);
+
+		List<User> requests = user.getFriendRequest();
+		
+		for(int i = 0; i < requests.size(); i++){
+			User request = requests.get(i);
+			if(request.getId() == userFriend.getId()){
+				requests.remove(i);
+				crudImpl.updateInstance(user);
+			}
+		}
 	}
 }

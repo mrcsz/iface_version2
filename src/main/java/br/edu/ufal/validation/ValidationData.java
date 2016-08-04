@@ -10,7 +10,7 @@ public class ValidationData {
 		return password.length() >= 4;
 	}
 
-	public static boolean validateSex(String sex) {
-		return sex.equalsIgnoreCase("M") || sex.equalsIgnoreCase("F");
+	public static boolean validateGender(String gender) {
+		return gender.equalsIgnoreCase("M") || gender.equalsIgnoreCase("F");
 	}
 }

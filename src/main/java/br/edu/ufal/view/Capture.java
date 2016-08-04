@@ -18,6 +18,7 @@ public class Capture {
 			return option;
 		} catch (InputMismatchException e) {
 			PrintError.inputError();
+			input.nextLine();//limpando o buffer
 		}
 
 		return 0;
@@ -43,8 +44,8 @@ public class Capture {
 		return input.nextLine();
 	}
 
-	public static String sexUser() {
-		Screen.getSexUser();
+	public static String genderUser() {
+		Screen.getGenderUser();
 		return input.nextLine();
 	}
 
@@ -106,5 +107,10 @@ public class Capture {
 	public static int getIdSolicitation() {
 		Screen.getIdSolicilitation();
 		return Capture.getOptionInt();
+	}
+
+	public static String searchUser() {
+		Screen.getNameUser();
+		return input.nextLine();
 	}
 }

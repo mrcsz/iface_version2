@@ -22,7 +22,7 @@ public class PrintError {
 		System.err.println("   Senha muito curta");
 	}
 
-	public static void invalidSex() {
+	public static void invalidGender() {
 		System.err.println("   Sexo invalido");
 		
 	}

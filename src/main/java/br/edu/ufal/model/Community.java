@@ -1,6 +1,6 @@
 package br.edu.ufal.model;
 
-public class Comunidades {
+public class Community {
 	String nome;
 	String descricao;
 }

@@ -4,13 +4,17 @@ package br.edu.ufal.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 
 @Entity
@@ -25,30 +29,19 @@ public class User {
 	private String email;
 	private String dateBirth;
 	private String password;
-	private String sex;
+	private String gender;
 	public Profile profile = new Profile();
 	
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	List<Solicitation> solicitation = new ArrayList<Solicitation>();
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(name = "friendship", joinColumns = @JoinColumn(name = "user1"), inverseJoinColumns = @JoinColumn(name = "user2"))
+	protected List<User> friend = new ArrayList<User>();
 	
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	List<Friend> friend = new ArrayList<Friend>();
+	@ManyToMany
+	@LazyCollection(LazyCollectionOption.FALSE)
+	@JoinTable(name = "requestFriendship", joinColumns = @JoinColumn(name = "user1"), inverseJoinColumns = @JoinColumn(name = "user2"))
+	protected List<User> friendRequest = new ArrayList<User>();
+		
 	
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	List<Chat> conversation = new ArrayList<Chat>();
-
-	public void setSolicitation(Solicitation solic) {
-		this.solicitation.add(solic);
-	}
-
-	public void setFriend(Friend fr) {
-		this.friend.add(fr);
-	}
-
-	public void setConversation(Chat conv) {
-		this.conversation.add(conv);
-	}
-
 	public int getId() {
 		return id;
 	}
@@ -65,28 +58,12 @@ public class User {
 		this.profile = profile;
 	}
 
-	public List<Solicitation> getSolicitation() {
-		return solicitation;
-	}
-
-	public void setSolicitation(ArrayList<Solicitation> solicitation) {
-		this.solicitation = solicitation;
-	}
-
-	public List<Friend> getFriend() {
+	public List<User> getFriend() {
 		return friend;
 	}
 
-	public void setFriend(ArrayList<Friend> friend) {
-		this.friend = friend;
-	}
-
-	public List<Chat> getConversation() {
-		return conversation;
-	}
-
-	public void setConversation(ArrayList<Chat> conversation) {
-		this.conversation = conversation;
+	public void setFriend(User friend) {
+		this.friend.add(friend);
 	}
 
 	public String getName() {
@@ -95,6 +72,14 @@ public class User {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public List<User> getFriendRequest() {
+		return friendRequest;
+	}
+
+	public void setFriendRequest(User solicitation) {
+		this.friendRequest.add(solicitation);
 	}
 
 	public String getLastName() {
@@ -129,12 +114,12 @@ public class User {
 		this.password = password;
 	}
 
-	public String getSex() {
-		return sex;
+	public String getGender() {
+		return gender;
 	}
 
-	public void setSex(String sex) {
-		this.sex = sex;
+	public void setGender(String gender) {
+		this.gender = gender;
 	}
 
 }
