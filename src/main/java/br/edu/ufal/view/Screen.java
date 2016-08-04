@@ -1,7 +1,5 @@
 package br.edu.ufal.view;
 
-import javax.persistence.criteria.CriteriaBuilder.In;
-
 import br.edu.ufal.model.User;
 
 public class Screen {
@@ -15,58 +13,57 @@ public class Screen {
 		System.out.println(" xxxxxxxxxxxxxxxxxxxxxxxxxxxx");
 		System.out.print("   >>  ");
 	}
-	
-	 public static void appFinalised() {
-	 System.out.println(" -------------------------------");
-	 System.out.println("|     Encerrando aplicativo     |");
-	 System.out.println(" -------------------------------");
-	 }
-	 
-	 public static void profile(User user){
-		 System.out.println( " ---------------- PERFIL ------------------\n");
-		 System.out.println( " Nome: " + user.getName());
-		 System.out.println( " Sobrenome: " + user.getLastName());
-		 System.out.println( " Email: " + user.getEmail());
-		 System.out.println( " Senha: " + user.getPassword());
-		 System.out.println( " Sexo: " + user.getSex());
-		 System.out.println( " Dt Nasc: " + user.getDateBirth());
-		 System.out.println( " Contato: " + user.profile.getContact());
-		 System.out.println( " Status: " + user.profile.getStatus());
-		 System.out.println( "\n ------- Informacoes Profissionais -------\n");
-		 System.out.println( " Nome da Empresa: " + user.profile.professionalInformation.getCompanyName());
-		 System.out.println( " Funcao exercida: " + user.profile.professionalInformation.getFunction());
-		 System.out.println( " Dt Inicio: " + user.profile.professionalInformation.getInitialDate());
-		 System.out.println( " Dt Fim: " + user.profile.professionalInformation.getFinalDate());
-		 System.out.println( "\n -------- Informacoes Educacionais ---------\n");
-		 System.out.println( " Curso: " + user.profile.educationalInformation.getCourse());
-		 System.out.println( " Nome da Instituicao: " + user.profile.educationalInformation.getInstitutionalName());
-		 System.out.println( " Ano de Conclusao: " + user.profile.educationalInformation.getYearConclusion());
-		 System.out.println( " ------------------------------------------- \n");
-	 }
-	
+
+	public static void appFinalised() {
+		System.out.println(" -------------------------------");
+		System.out.println("|     Encerrando aplicativo     |");
+		System.out.println(" -------------------------------");
+	}
+
+	public static void profile(User user) {
+		System.out.println(" ---------------- PERFIL ------------------\n");
+		System.out.println(" Nome: " + user.getName());
+		System.out.println(" Sobrenome: " + user.getLastName());
+		System.out.println(" Email: " + user.getEmail());
+		System.out.println(" Senha: " + user.getPassword());
+		System.out.println(" Sexo: " + user.getSex());
+		System.out.println(" Dt Nasc: " + user.getDateBirth());
+		System.out.println(" Contato: " + user.profile.getContact());
+		System.out.println(" Status: " + user.profile.getStatus());
+		System.out.println("\n ------- Informacoes Profissionais -------\n");
+		System.out.println(" Nome da Empresa: " + user.profile.professionalInformation.getCompanyName());
+		System.out.println(" Funcao exercida: " + user.profile.professionalInformation.getFunction());
+		System.out.println(" Dt Inicio: " + user.profile.professionalInformation.getInitialDate());
+		System.out.println(" Dt Fim: " + user.profile.professionalInformation.getFinalDate());
+		System.out.println("\n -------- Informacoes Educacionais ---------\n");
+		System.out.println(" Curso: " + user.profile.educationalInformation.getCourse());
+		System.out.println(" Nome da Instituicao: " + user.profile.educationalInformation.getInstitutionalName());
+		System.out.println(" Ano de Conclusao: " + user.profile.educationalInformation.getYearConclusion());
+		System.out.println(" ------------------------------------------- \n");
+	}
+
 	// public void msgVoltando() {
 	//
 	// System.out.println("|*** Voltando ao menu anterior ***|");
 	// System.out.println(" ----------------------------------------------");
 	// }
 	//
-	 public static void displayInitialMenu() {
-	 System.out.println(" #################################");
-	 System.out.println("|       BEM VINDO AO IFACE        |");
-	 System.out.println("|                                 |");
-	 System.out.println("| 1 - Perfil                      |");
-	 System.out.println("| 2 - Amigos                      |");
-	 System.out.println("| 3 - Comunidades                 |");
-	 System.out.println("| 4 - Chat                        |");
-	 System.out.println("| 5 - Busca por usuario           |");
-	 System.out.println("| 6 - Configuracoes               |");
-	 System.out.println("| 7 - Logout                      |");
-	 System.out.println("| 8 - Encerrar aplicativo         |");
-	 System.out.println(" xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
-	 System.out.print(" >> ");
-	 }
+	public static void displayInitialMenu() {
+		System.out.println(" #################################");
+		System.out.println("|       BEM VINDO AO IFACE        |");
+		System.out.println("|                                 |");
+		System.out.println("| 1 - Perfil                      |");
+		System.out.println("| 2 - Amigos                      |");
+		System.out.println("| 3 - Comunidades                 |");
+		System.out.println("| 4 - Chat                        |");
+		System.out.println("| 5 - Busca por usuario           |");
+		System.out.println("| 6 - Configuracoes               |");
+		System.out.println("| 7 - Logout                      |");
+		System.out.println("| 8 - Encerrar aplicativo         |");
+		System.out.println(" xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+		System.out.print(" >> ");
+	}
 
-	 
 	// public void msgAcessoNegado() {
 	// System.out.println(" -----------------");
 	// System.out.println("| Acesso Negado! |");
@@ -119,30 +116,28 @@ public class Screen {
 	// return msg;
 	// }
 	//
-	
-	
-	 public static void profileEditionOption() {
-	
-	 System.out.println(" ------------------ EDITAR -------------------");
-	 System.out.println("|      ** O que voce deseja editar? **        |");
-	 System.out.println("| 1 - nome                                    |");
-	 System.out.println("| 2 - sobrenome                               |");
-	 System.out.println("| 3 - sexo                                    |");
-	 System.out.println("| 4 - Dt Nascimento                           |");
-	 System.out.println("| 5 - contato                                 |");
-	 System.out.println("| 6 - status                                  |");
-	 System.out.println("| 7 - Informacoes Profisionais                |");
-	 System.out.println("| 8 - Informacoes Educacionais                |");
-	 System.out.println("| 9 - voltar                                  |");
-	 System.out.println("|                                             |");
-	 System.out.println("| obs.: para editar login(email)/senha va     |");
-	 System.out.println("| para \"6 - configuracoes\" na tela inicial  |");
-	 System.out.println(" xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
-	 System.out.print(" >> ");
-	
-	 }
-	 
-	 
+
+	public static void profileEditionOption() {
+
+		System.out.println(" ------------------ EDITAR -------------------");
+		System.out.println("|      ** O que voce deseja editar? **        |");
+		System.out.println("| 1 - nome                                    |");
+		System.out.println("| 2 - sobrenome                               |");
+		System.out.println("| 3 - sexo                                    |");
+		System.out.println("| 4 - Dt Nascimento                           |");
+		System.out.println("| 5 - contato                                 |");
+		System.out.println("| 6 - status                                  |");
+		System.out.println("| 7 - Informacoes Profisionais                |");
+		System.out.println("| 8 - Informacoes Educacionais                |");
+		System.out.println("| 9 - voltar                                  |");
+		System.out.println("|                                             |");
+		System.out.println("| obs.: para editar login(email)/senha va     |");
+		System.out.println("| para \"6 - configuracoes\" na tela inicial  |");
+		System.out.println(" xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+		System.out.print(" >> ");
+
+	}
+
 	//
 	// public void atualizadoComSucesso(){
 	// System.out.println(" -----------------------------------");
@@ -159,23 +154,8 @@ public class Screen {
 	// System.out.print(" >> ");
 	// }
 	//
-	// public void menuAmigos() {
-	// System.out.println(" ------------- AMIGOS --------------");
-	// System.out.println("| 1 - Solicitacoes de amizade |");
-	// System.out.println("| 2 - Buscar Amigos |");
-	// System.out.println("| 3 - Listar Meus amigos |");
-	// System.out.println("| 4 - Voltar |");
-	// System.out.println(" xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
-	// System.out.print(" >> ");
 	//
-	// }
-	//
-	// public void menuAdcAmigo() {
-	// System.out.println(" xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
-	// System.out.println("| 1 - enviar solicitacao |");
-	// System.out.println("| 2 - Voltar |");
-	// System.out.println(" xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
-	// System.out.print(" >> ");
+	
 	//
 	// }
 	//
@@ -189,14 +169,7 @@ public class Screen {
 	//
 	// }
 	//
-	// public void menuResponderSolicitacao() {
-	// System.out.println(" xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
-	// System.out.println("| 1 - Aceitar solicitacao |");
-	// System.out.println("| 2 - Rejeitar solicitacao |");
-	// System.out.println("| 3 - Voltar |");
-	// System.out.println(" xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
-	// System.out.print(" >> ");
-	// }
+
 	//
 	// public void msgAmigoAdc() {
 	// System.out.println(" ------- ---------------------------");
@@ -307,12 +280,12 @@ public class Screen {
 	}
 
 	public static void displayMenuTryAgain() {
-		 System.out.println(" -------------------------");
-		 System.out.println("| 1 - Tentar novamente    |");
-		 System.out.println("| 2 - Voltar              |");
-		 System.out.println(" xxxxxxxxxxxxxxxxxxxxxxxxx");
-		 System.out.print(" >> ");
-				
+		System.out.println(" -------------------------");
+		System.out.println("| 1 - Tentar novamente    |");
+		System.out.println("| 2 - Voltar              |");
+		System.out.println(" xxxxxxxxxxxxxxxxxxxxxxxxx");
+		System.out.print(" >> ");
+
 	}
 
 	public static void registrationSucessfully() {
@@ -324,37 +297,82 @@ public class Screen {
 
 	public static void profileOption() {
 
-		 System.out.println(" xxxxxxxxxxxxxxxxxxxxxxxxx ");
-		 System.out.println("| 1 - Editar perfil       |");
-		 System.out.println("| 2 - Voltar              |");
-		 System.out.println(" xxxxxxxxxxxxxxxxxxxxxxxxx ");
-		 System.out.print(" >> ");
+		System.out.println(" xxxxxxxxxxxxxxxxxxxxxxxxx ");
+		System.out.println("| 1 - Editar perfil       |");
+		System.out.println("| 2 - Voltar              |");
+		System.out.println(" xxxxxxxxxxxxxxxxxxxxxxxxx ");
+		System.out.print(" >> ");
 
 	}
 
 	public static void getContactUser() {
 		System.out.print("   Contato: ");
 	}
-	
+
 	public static void getStatusUser() {
 		System.out.print("   status: ");
 	}
 
 	public static void getCompanyName() {
-		System.out.println("   Empresa: ");
+		System.out.print("   Empresa: ");
 	}
 
 	public static void getFunction() {
-		System.out.println("   Funcao: ");
+		System.out.print("   Funcao: ");
 	}
 
 	public static void getInitialDate() {
-		System.out.println("   Data de inicio: ");
+		System.out.print("   Data de inicio: ");
 	}
 
 	public static void getFinalDate() {
-		System.out.println("   Data de fim(opcional): ");
+		System.out.print("   Data de fim(opcional): ");
+	}
+
+	public static void getCourseName() {
+		System.out.print("   Curso: ");
+	}
+
+	public static void getYearConclusion() {
+		System.out.print("   Ano de conclusao: ");
+	}
+
+	public static void getInstitutionalName() {
+		System.out.print("   Nome da Instituicao: ");
+	}
+
+	public static void menuFriends() {
+		System.out.println(" ------------- AMIGOS --------------");
+		System.out.println("| 1 - Solicitacoes de amizade       |");
+		System.out.println("| 2 - Buscar Amigos                 |");
+		System.out.println("| 3 - Listar Meus amigos            |");
+		System.out.println("| 4 - Voltar                        |");
+		System.out.println(" xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+		System.out.print(" >> ");
+	}
+
+	public static void PrintIdAndNomeUser(int id, User generalUser) {
+		System.out.println(generalUser.getId() + " " + generalUser.getName() + " " + generalUser.getLastName());
 	}
 	
-	
+	 public static void menuAddFriend() {
+		 System.out.println(" xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+		 System.out.println("| 1 - enviar solicitacao |");
+		 System.out.println("| 2 - Voltar |");
+		 System.out.println(" xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+		 System.out.print(" >> ");
+	 }
+	 
+	public static void aceptFriend() {
+		 System.out.println(" xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+		 System.out.println("| 1 - Aceitar solicitacao       |");
+		 System.out.println("| 2 - Rejeitar solicitacao      |");
+		 System.out.println("| 3 - Voltar                    |");
+		 System.out.println(" xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+		 System.out.print(" >> ");
+	}
+
+	public static void getIdSolicilitation() {
+		System.out.print("Id do Amigo a convidar: ");
+	}
 }

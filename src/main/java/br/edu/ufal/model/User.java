@@ -32,10 +32,22 @@ public class User {
 	List<Solicitation> solicitation = new ArrayList<Solicitation>();
 	
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	List<Friend> friend;
+	List<Friend> friend = new ArrayList<Friend>();
 	
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	List<Chat> conversation;
+	List<Chat> conversation = new ArrayList<Chat>();
+
+	public void setSolicitation(Solicitation solic) {
+		this.solicitation.add(solic);
+	}
+
+	public void setFriend(Friend fr) {
+		this.friend.add(fr);
+	}
+
+	public void setConversation(Chat conv) {
+		this.conversation.add(conv);
+	}
 
 	public int getId() {
 		return id;

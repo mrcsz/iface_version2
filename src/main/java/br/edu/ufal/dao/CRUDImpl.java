@@ -9,6 +9,8 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.criterion.Restrictions;
 
+import br.edu.ufal.model.Friend;
+import br.edu.ufal.model.Solicitation;
 import br.edu.ufal.model.User;
 
 public class CRUDImpl{
@@ -169,7 +171,90 @@ public class CRUDImpl{
 		}	
 		return false;		
 	}
+
+	@SuppressWarnings({ "deprecation", "unchecked" })
+	public List<Friend> listFriends(int idUser) {
+
+		session = sessionFactory.openSession();
+		List<Friend> list = null;
+
+		try {
+			session.beginTransaction();
+			
+			list = session.createCriteria(Friend.class)
+					.add(Restrictions.ne("id", idUser)).list();
+
+			session.close();
+		} catch (HibernateException e) {
+			e.printStackTrace();
+			session.getTransaction().rollback();
+
+		}
+
+		return list;
 	
+	}
+
+	@SuppressWarnings({ "unchecked", "deprecation" })
+	public List<User> listUsers(int idUser) {
+
+		session = sessionFactory.openSession();
+		List<User> list = null;
+
+		try {
+			session.beginTransaction();
+			
+			list = session.createCriteria(User.class)
+					.add(Restrictions.ne("id", idUser)).list();
+			
+			session.close();
+		} catch (HibernateException e) {
+			e.printStackTrace();
+			session.getTransaction().rollback();
+
+		}
+
+		return list;
+	}
+
+	@SuppressWarnings({ "deprecation", "unchecked" })
+	public List<Solicitation> listSolicitations(int idUser) {
+		
+		session = sessionFactory.openSession();
+		List<Solicitation> list = null;
+
+		try {
+			session.beginTransaction();
+			
+			list = session.createCriteria(Solicitation.class)
+					.add(Restrictions.ne("id", idUser)).list();
+
+			session.close();
+		} catch (HibernateException e) {
+			e.printStackTrace();
+			session.getTransaction().rollback();
+
+		}
+
+		return list;
+	}
+
+	public void sendSolicitation(Solicitation solicitation) {
+		// TODO Auto-generated method stub
+		
+		session = sessionFactory.openSession();
+		List<Solicitation> list = null;
+
+		try {
+			session.beginTransaction();
+			
+			session.close();
+		} catch (HibernateException e) {
+			e.printStackTrace();
+			session.getTransaction().rollback();
+
+		}
+	}
 }
 
 

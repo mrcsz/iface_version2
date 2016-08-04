@@ -82,16 +82,18 @@ public class App {
 								//VOLTA COM QUALQUER VALOR DIFERENTE DO 1
 
 							}
-//
-//							break;
-//						case 2: //AMIGOS
-//
-//							out.menuAmigos();
-//
-//							switch(in.obterOpcao()){
-//							case 1: //SOLICITACOES DE AMIZADE
-//								control.gerUsers.listaSolicitacoesAmizade(codUserAtual);
-//
+
+							break;
+						case 2: //AMIGOS
+
+							Screen.menuFriends();
+
+							switch(Capture.getOptionInt()){
+							case 1: //SOLICITACOES DE AMIZADE
+								
+								//control.gerUsers.listaSolicitacoesAmizade(codUserAtual);
+								//Controller.listSolicitationFriendship(idUser);
+								
 //								out.menuResponderSolicitacao();
 //
 //								switch(in.obterOpcao()){
@@ -111,22 +113,21 @@ public class App {
 //								}
 //
 //								break;
-//							case 2: //BUSCAR AMIGOS
-//								control.gerUsers.listaUsuarioCadastrados(codUserAtual);
-//
-//								out.menuAdcAmigo();
-//
-//
-//
-//								switch(in.obterOpcao()){
-//								case 1: //ENVIAR SOLICITACAO
-//
-//									control.gerUsers.ennviarSolicitacao(codUserAtual);
-//
-//									break;
-//								default:
-//									//VOLTAR
-//								}
+							case 2: //BUSCAR AMIGOS
+								
+								Controller.listUsers(idUser);
+								
+								Screen.menuAddFriend();
+
+								switch(Capture.getOptionInt()){
+								case 1: //ENVIAR SOLICITACAO
+
+									Controller.sendSolicitation(idUser);
+
+									break;
+								default:
+									//VOLTAR
+								}
 //
 //								break;
 //							case 3: //LISTAR AMIGOS
@@ -136,11 +137,11 @@ public class App {
 //								break;
 //							default:		
 //								//VOLTAR
-//							}
+							}
 //
 //
 //							break;
-//						case 3: //COMUNIDADES
+						case 3: //COMUNIDADES
 //
 //
 //
