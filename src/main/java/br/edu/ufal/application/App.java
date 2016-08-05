@@ -148,6 +148,34 @@ public class App {
 						case 3: //COMUNIDADES
 							
 							Screen.menuCommunity();
+							
+							switch(Capture.getOptionInt()){
+							case 1: //CRIAR COMUNIDADE
+								
+								Controller.createCommunity(user);
+								break;
+							case 2: //EXCLUIR COMUNIDADE
+								
+								break;
+							case 3: //LISTAR COMUNIDADE
+								
+								Screen.menuListCommunities();
+								switch(Capture.getOptionInt()){
+								case 1: //TODAS
+									
+									break;
+								case 2: //SO AS DO USER
+									
+									break;
+									default:
+										//VOLTAR
+								}
+								
+								
+								break;
+							default:
+								//VOLTAR
+							}
 
 							
 

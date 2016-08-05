@@ -10,6 +10,7 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.criterion.Restrictions;
 
 import br.edu.ufal.model.Chat;
+import br.edu.ufal.model.Community;
 import br.edu.ufal.model.Msg;
 import br.edu.ufal.model.User;
 
@@ -21,6 +22,23 @@ public class CRUDImpl {
 
 	Session session = threadLocal.get();
 
+	public void addInstance(Community instance) {
+		session = sessionFactory.openSession();
+
+		try {
+			session.beginTransaction();
+			session.save(instance);
+
+			session.getTransaction().commit();
+			session.close();
+		} catch (HibernateException e) {
+			e.printStackTrace();
+			session.getTransaction().rollback();
+
+		}
+
+	}
+	
 	public void addInstance(User instance) {
 		session = sessionFactory.openSession();
 

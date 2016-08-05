@@ -155,7 +155,7 @@ public class Screen {
 	// }
 	//
 	//
-	
+
 	//
 	// }
 	//
@@ -185,42 +185,42 @@ public class Screen {
 	// System.out.println("");
 	// }
 	//
-	
+
 	public static void menuSettings() {
-	 System.out.println(" xxxxxxxxxxxxxxxxxxxxxx");
-	 System.out.println("| 1 - Alterar email    |");
-	 System.out.println("| 2 - Alterar senha    |");
-	 System.out.println("| 3 - Excluir conta    |");
-	 System.out.println("| 4 - Voltar           |");
-	 System.out.println(" xxxxxxxxxxxxxxxxxxxxxx");
-	 System.out.print(" >> ");
-	 }
-	
-	 public static void menuMsgs() {
-	 System.out.println(" ----------- MENSAGENS -------------");
-	 System.out.println("| 1 - Enviar mensagem               |");
-	 System.out.println("| 2 - caixa de mensagens            |");
-	 System.out.println("| 3 - Limpar historico de msgs      |");
-	 System.out.println("| 4 - Voltar                        |");
-	 System.out.println(" xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
-	 System.out.print(" >> ");
-	 }
-	
-	 public static void menuEntryBox() {
-	 System.out.println(" xxxxxxxxxxxxxxxxxxxxxxxxx");
-	 System.out.println("| 1 - abrir conversa      |");
-	 System.out.println("| 2 - voltar              |");
-	 System.out.println(" xxxxxxxxxxxxxxxxxxxxxxxxx");
-	 System.out.print(" >> ");
-	 }
-	
-	 public static void otherMsg() {
-	 System.out.println(" xxxxxxxxxxxxxxxxxxxxxxxxxx");
-	 System.out.println("| 1 - enviar outra msg     |");
-	 System.out.println("| 2 - voltar               |");
-	 System.out.println(" xxxxxxxxxxxxxxxxxxxxxxxxxx");
-	 System.out.print(" >> ");
-	 }
+		System.out.println(" xxxxxxxxxxxxxxxxxxxxxx");
+		System.out.println("| 1 - Alterar email    |");
+		System.out.println("| 2 - Alterar senha    |");
+		System.out.println("| 3 - Excluir conta    |");
+		System.out.println("| 4 - Voltar           |");
+		System.out.println(" xxxxxxxxxxxxxxxxxxxxxx");
+		System.out.print(" >> ");
+	}
+
+	public static void menuMsgs() {
+		System.out.println(" ----------- MENSAGENS -------------");
+		System.out.println("| 1 - Enviar mensagem               |");
+		System.out.println("| 2 - caixa de mensagens            |");
+		System.out.println("| 3 - Limpar historico de msgs      |");
+		System.out.println("| 4 - Voltar                        |");
+		System.out.println(" xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+		System.out.print(" >> ");
+	}
+
+	public static void menuEntryBox() {
+		System.out.println(" xxxxxxxxxxxxxxxxxxxxxxxxx");
+		System.out.println("| 1 - abrir conversa      |");
+		System.out.println("| 2 - voltar              |");
+		System.out.println(" xxxxxxxxxxxxxxxxxxxxxxxxx");
+		System.out.print(" >> ");
+	}
+
+	public static void otherMsg() {
+		System.out.println(" xxxxxxxxxxxxxxxxxxxxxxxxxx");
+		System.out.println("| 1 - enviar outra msg     |");
+		System.out.println("| 2 - voltar               |");
+		System.out.println(" xxxxxxxxxxxxxxxxxxxxxxxxxx");
+		System.out.print(" >> ");
+	}
 	//
 	// public void historicoMsgLimpo() {
 	// System.out.println("
@@ -352,25 +352,26 @@ public class Screen {
 		System.out.print(" >> ");
 	}
 
-//	public static void PrintIdAndNomeUser(int id, User generalUser) {
-//		System.out.println(generalUser.getId() + " " + generalUser.getName() + " " + generalUser.getLastName());
-//	}
-	
-	 public static void menuAddFriend() {
-		 System.out.println(" xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
-		 System.out.println("| 1 - enviar solicitacao |");
-		 System.out.println("| 2 - Voltar |");
-		 System.out.println(" xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
-		 System.out.print(" >> ");
-	 }
-	 
+	// public static void PrintIdAndNomeUser(int id, User generalUser) {
+	// System.out.println(generalUser.getId() + " " + generalUser.getName() + "
+	// " + generalUser.getLastName());
+	// }
+
+	public static void menuAddFriend() {
+		System.out.println(" xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+		System.out.println("| 1 - enviar solicitacao |");
+		System.out.println("| 2 - Voltar |");
+		System.out.println(" xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+		System.out.print(" >> ");
+	}
+
 	public static void aceptFriend() {
-		 System.out.println(" xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
-		 System.out.println("| 1 - Aceitar solicitacao       |");
-		 System.out.println("| 2 - Rejeitar solicitacao      |");
-		 System.out.println("| 3 - Voltar                    |");
-		 System.out.println(" xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
-		 System.out.print(" >> ");
+		System.out.println(" xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+		System.out.println("| 1 - Aceitar solicitacao       |");
+		System.out.println("| 2 - Rejeitar solicitacao      |");
+		System.out.println("| 3 - Voltar                    |");
+		System.out.println(" xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+		System.out.print(" >> ");
 	}
 
 	public static void getIdSolicilitation() {
@@ -378,21 +379,21 @@ public class Screen {
 	}
 
 	public static void menuCommunity() {
-		 System.out.println(" xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
-		 System.out.println("| 1 - Criar comunidade            |");
-		 System.out.println("| 2 - Excluir comunidade          |");
-		 System.out.println("| 3 - Listar comunidades		   |");
-		 System.out.println("| 4 - voltar	            	   |");
-		 System.out.println(" xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
-		 System.out.print(" >> ");
+		System.out.println(" xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+		System.out.println("| 1 - Criar comunidade            |");
+		System.out.println("| 2 - Excluir comunidade          |");
+		System.out.println("| 3 - Listar comunidades		   |");
+		System.out.println("| 4 - voltar	            	   |");
+		System.out.println(" xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+		System.out.print(" >> ");
 	}
-	
+
 	public static void menuInternalCommunity() {
-		 System.out.println(" xxxxxxxxxxxxxxxxxxxxxxx");
-		 System.out.println("| 1 - Enviar msg        |");
-		 System.out.println("| 2 - Excluir msg       |");
-		 System.out.println(" xxxxxxxxxxxxxxxxxxxxxxx");
-		 System.out.print(" >> ");
+		System.out.println(" xxxxxxxxxxxxxxxxxxxxxxx");
+		System.out.println("| 1 - Enviar msg        |");
+		System.out.println("| 2 - Excluir msg       |");
+		System.out.println(" xxxxxxxxxxxxxxxxxxxxxxx");
+		System.out.print(" >> ");
 	}
 
 	public static void sendMsg() {
@@ -401,5 +402,29 @@ public class Screen {
 
 	public static void getMsg() {
 		System.out.print("msg: ");
+	}
+
+	public static void menuListCommunities() {
+		System.out.println(" xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+		System.out.println("| 1 - Todas as comunidades        |");
+		System.out.println("| 2 - Minhas comunidades          |");
+		System.out.println("| 3 - voltar	                  |");
+		System.out.println(" xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+		System.out.print(" >> ");
+	}
+
+	public static void newCommunity() {
+		
+		System.out.println(" ------------------");
+		System.out.println("| Nova comunidade  |");
+		System.out.println(" ------------------");
+	}
+
+	public static void getCommunityName() {
+		System.out.print("\nNome: ");
+	}
+
+	public static void getDescribeCommunity() {
+		System.out.print("Descricao: ");
 	}
 }

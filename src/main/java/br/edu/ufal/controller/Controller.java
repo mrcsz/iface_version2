@@ -5,6 +5,7 @@ import java.util.List;
 
 import br.edu.ufal.dao.CRUDImpl;
 import br.edu.ufal.model.Chat;
+import br.edu.ufal.model.Community;
 import br.edu.ufal.model.Msg;
 import br.edu.ufal.model.User;
 import br.edu.ufal.validation.ValidationData;
@@ -70,7 +71,6 @@ public class Controller {
 	}
 
 	public static User authenticationLogin() {
-
 		String email = Capture.emailUser();
 
 		String password = Capture.passwordUser();
@@ -134,63 +134,63 @@ public class Controller {
 	}
 
 	public static void listFriends(User user) {
-		
+
 		List<User> list = user.getFriend();
-		
+
 		Iterator<User> itr = list.iterator();
 		while (itr.hasNext()) {
 			User element = (User) itr.next();
-				System.out.println(element.getId() + " " + element.getName() + " " + element.getLastName());
+			System.out.println(element.getId() + " " + element.getName() + " " + element.getLastName());
 		}
 	}
 
 	public static int sendMsg(User user) {
 		boolean bool = true;
 		listFriends(user);
-		
+
 		int idFriend = Capture.getIdSolicitation();
 		String msgContent = Capture.writeMessage();
-		
+
 		List<Chat> chats = user.getChat();
-		
+
 		User userFriend = crudImpl.getInstanceId(idFriend);
 		List<Chat> chats2 = userFriend.getChat();
-		
+
 		Iterator<Chat> itr = chats.iterator();
 		while (itr.hasNext()) {
 			Chat element = (Chat) itr.next();
-			if(element.getIdFriend() == idFriend){
+			if (element.getIdFriend() == idFriend) {
 				Iterator<Chat> it = chats2.iterator();
-				while(it.hasNext()){
+				while (it.hasNext()) {
 					Chat elem = (Chat) it.next();
-					if(element.getIdFriend() == user.getId()){
+					if (element.getIdFriend() == user.getId()) {
 						Msg msg = new Msg(user.getId(), user.getName(), msgContent);
 						element.getMsgs().add(msg);
 						elem.getMsgs().add(msg);
-						
+
 						crudImpl.addInstance(msg);
 						bool = false;
 					}
 				}
 			}
 		}
-		
-		if(bool){
+
+		if (bool) {
 			Msg msg = new Msg(user.getId(), user.getName(), msgContent);
-			
+
 			Chat chat = new Chat();
 			chat.setIdUser(user.getId());
 			chat.setIdFriend(idFriend);
 			chat.setMsgs(msg);
-			
+
 			crudImpl.addInstance(chat, msg);
 			user.getChat().add(chat);
 			userFriend.getChat().add(chat);
-			
+
 		}
-		
+
 		crudImpl.updateInstance(user);
-		
+
 		return 0;
 	}
 
@@ -229,7 +229,6 @@ public class Controller {
 
 		User userFriend = crudImpl.getInstanceId(idfriend);
 
-
 		user.setFriend(userFriend);
 		userFriend.setFriend(user);
 
@@ -240,33 +239,48 @@ public class Controller {
 	}
 
 	public static void removeRequest(User user, User userFriend) {
-		
-		
+
 		List<User> requests = user.getFriendRequest();
-		
-		for(int i = 0; i < requests.size(); i++){
+
+		for (int i = 0; i < requests.size(); i++) {
 			User request = requests.get(i);
-			if(request.getId() == userFriend.getId()){
+			if (request.getId() == userFriend.getId()) {
 				requests.remove(i);
 				crudImpl.updateInstance(user);
 			}
 		}
 	}
-	
-public static void removeRequest(User user) {
-		
-	int idfriend = Capture.getIdSolicitation();
 
-	User userFriend = crudImpl.getInstanceId(idfriend);
+	public static void removeRequest(User user) {
+
+		int idfriend = Capture.getIdSolicitation();
+
+		User userFriend = crudImpl.getInstanceId(idfriend);
 
 		List<User> requests = user.getFriendRequest();
-		
-		for(int i = 0; i < requests.size(); i++){
+
+		for (int i = 0; i < requests.size(); i++) {
 			User request = requests.get(i);
-			if(request.getId() == userFriend.getId()){
+			if (request.getId() == userFriend.getId()) {
 				requests.remove(i);
 				crudImpl.updateInstance(user);
 			}
 		}
+	}
+
+	public static void createCommunity(User user) {
+
+		Screen.newCommunity();
+		String name = Capture.getCommunityName();
+		String describe = Capture.getDescribe();
+
+		Community community = new Community();
+		community.setAdmin(user.getId());
+		community.setName(name);
+		community.setDescribe(describe);
+		// crudImpl.addInstance(community);
+
+		user.setCommunity(community);
+		// crudImpl.updateInstance(user);
 	}
 }

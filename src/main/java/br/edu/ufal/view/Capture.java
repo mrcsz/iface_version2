@@ -118,4 +118,14 @@ public class Capture {
 		Screen.getMsg();
 		return input.nextLine();
 	}
+
+	public static String getCommunityName() {
+		Screen.getCommunityName();
+		return input.nextLine();
+	}
+
+	public static String getDescribe() {
+		Screen.getDescribeCommunity();
+		return input.nextLine();
+	}
 }
