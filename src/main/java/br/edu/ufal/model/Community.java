@@ -9,8 +9,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
-
 
 @Entity
 public class Community {
@@ -19,63 +17,46 @@ public class Community {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	int id;
 	
-	int admin;
+	private String dados;
 
-	String name;
-	String describe;
+	@ManyToMany(cascade = CascadeType.ALL)
+	List<User> users = new ArrayList<User>(); //User do indice zero eh adm
 	
 	@ManyToMany(cascade = CascadeType.ALL)
-	List<User> member = new ArrayList<User>();
-	
-	@OneToMany(cascade = CascadeType.PERSIST)
-	List<ChatCommunity> chatCommunity = new ArrayList<ChatCommunity>();
+	List<ChatCommunity> communities = new ArrayList<ChatCommunity>();
 
-	public int getAdmin() {
-		return admin;
+	public String getDados() {
+		return dados;
 	}
 
-	public void setAdmin(int admin) {
-		this.admin = admin;
+	public void setDados(String dados) {
+		this.dados = dados;
 	}
 	
+	public List<User> getUsers() {
+		return users;
+	}
+
+	public void setUsers(User user) {
+		this.users.add(user);
+	}
+
 	public int getId() {
 		return id;
+	}
+
+	public List<ChatCommunity> getCommunities() {
+		return communities;
+	}
+
+	public void setCommunity(ChatCommunity community) {
+		this.communities.add(community);
 	}
 
 	public void setId(int id) {
 		this.id = id;
 	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getDescribe() {
-		return describe;
-	}
-
-	public void setDescribe(String describe) {
-		this.describe = describe;
-	}
-
-	public List<User> getUser() {
-		return member;
-	}
-
-	public void setUser(User member) {
-		this.member.add(member);
-	}
-
-	public List<ChatCommunity> getChatCommunity() {
-		return chatCommunity;
-	}
-
-	public void setChatCommunity(List<ChatCommunity> chatCommunity) {
-		this.chatCommunity = chatCommunity;
-	}
+	
+	
 	
 }

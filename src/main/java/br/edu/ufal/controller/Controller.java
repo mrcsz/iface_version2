@@ -274,13 +274,12 @@ public class Controller {
 		String name = Capture.getCommunityName();
 		String describe = Capture.getDescribe();
 
-		Community community = new Community();
-		community.setAdmin(user.getId());
-		community.setName(name);
-		community.setDescribe(describe);
+//		Community community = new Community();
+//		community.setName(name);
+//		community.setDescribe(describe);
 		// crudImpl.addInstance(community);
 
-		user.setCommunity(community);
+	//	user.setCommunity(community);
 		// crudImpl.updateInstance(user);
 	}
 }

@@ -1,24 +1,19 @@
 package br.edu.ufal.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 
 @Entity
-public class ChatCommunity {
+public class MsgCommunity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	int id;
-
-	@ManyToMany
-	List<MsgCommunity> msgsCommunity = new ArrayList<MsgCommunity>();
 	
+	String content;
+
 	public int getId() {
 		return id;
 	}
@@ -26,7 +21,14 @@ public class ChatCommunity {
 	public void setId(int id) {
 		this.id = id;
 	}
-	
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
 	
 	
 }

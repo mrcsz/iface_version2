@@ -10,13 +10,14 @@
 		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
 		<property name="hibernate.show_sql">true</property>
 		<property name="hibernate.format_sql">false</property>
-		<property name="hbm2ddl.auto">update</property>
+		<property name="hbm2ddl.auto">create</property>
 
 		
 		<mapping class="br.edu.ufal.model.User"/>
-		<mapping class="br.edu.ufal.model.Community"/>
-		<mapping class="br.edu.ufal.model.ChatCommunity"/>
 		<mapping class="br.edu.ufal.model.Chat"/>		
+		<mapping class="br.edu.ufal.model.Community"/>	
+		<mapping class="br.edu.ufal.model.ChatCommunity"/>				
+		<mapping class="br.edu.ufal.model.MsgCommunity"/>				
 		<mapping class="br.edu.ufal.model.Msg"/>		
 		<mapping class="br.edu.ufal.model.Profile"/>
 		<mapping class="br.edu.ufal.model.ProfessionalInformation"/>
