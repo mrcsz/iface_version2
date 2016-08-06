@@ -128,4 +128,9 @@ public class Capture {
 		Screen.getDescribeCommunity();
 		return input.nextLine();
 	}
+
+	public static int idCommunity() {
+		Screen.selectCommunity();
+		return Capture.getOptionInt();
+	}
 }

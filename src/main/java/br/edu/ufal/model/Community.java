@@ -45,7 +45,7 @@ public class Community {
 		return id;
 	}
 
-	public List<ChatCommunity> getCommunities() {
+	public List<ChatCommunity> getChatCommunity() {
 		return communities;
 	}
 

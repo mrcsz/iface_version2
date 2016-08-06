@@ -7,27 +7,27 @@ public class PrintError {
 	}
 
 	public static void invalidDateError() {
-		System.err.println("   Data Invalida");
+		System.err.println("   Data Invalida\n");
 	}
 
 	public static void invalidEmailError() {
-		System.err.println("   Email Invalida");
+		System.err.println("   Email Invalido\n");
 	}
 
 	public static void invalidNameError() {
-		System.err.println("   Nome invalido");
+		System.err.println("   Nome invalido\n");
 	}
 
 	public static void invalidPaswordError() {
-		System.err.println("   Senha muito curta");
+		System.err.println("   Senha muito curta\n");
 	}
 
 	public static void invalidGender() {
-		System.err.println("   Sexo invalido");
+		System.err.println("   Sexo invalido\n");
 		
 	}
 
 	public static void msgEmailIsAlreadyRegistered() {
-		System.err.println("Este email ja esta cadastrado no sistema");
+		System.err.println("Este email ja esta cadastrado no sistema\n");
 	}
 }

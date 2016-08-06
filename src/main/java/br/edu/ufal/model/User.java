@@ -42,21 +42,21 @@ public class User {
 	@LazyCollection(LazyCollectionOption.FALSE)
 	protected List<User> friendRequest = new ArrayList<User>();
 		
-//	@ManyToMany
-//	
-//	protected List<Community> community = new ArrayList<Community>();
+	@ManyToMany	
+	@LazyCollection(LazyCollectionOption.FALSE)
+	protected List<Community> community = new ArrayList<Community>();
 
 	@OneToMany(cascade = CascadeType.PERSIST)
 	@LazyCollection(LazyCollectionOption.FALSE)
 	protected List<Chat> chat = new ArrayList<Chat>();
 	
-//	public List<Community> getCommunity() {
-//		return community;
-//	}
-//
-//	public void setCommunity(Community community) {
-//		this.community.add(community);
-//	}
+	public List<Community> getCommunity() {
+		return community;
+	}
+
+	public void setCommunity(Community community) {
+		this.community.add(community);
+	}
 
 	public List<Chat> getChat() {
 		return chat;

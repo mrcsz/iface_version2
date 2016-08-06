@@ -5,8 +5,10 @@ import java.util.List;
 
 import br.edu.ufal.dao.CRUDImpl;
 import br.edu.ufal.model.Chat;
+import br.edu.ufal.model.ChatCommunity;
 import br.edu.ufal.model.Community;
 import br.edu.ufal.model.Msg;
+import br.edu.ufal.model.MsgCommunity;
 import br.edu.ufal.model.User;
 import br.edu.ufal.validation.ValidationData;
 import br.edu.ufal.validation.ValidationDate;
@@ -30,7 +32,6 @@ public class Controller {
 
 		String email = Capture.emailUser();
 		if (!ValidationEmail.validate(email)) {
-			PrintError.invalidEmailError();
 			return -1;
 		}
 
@@ -114,9 +115,9 @@ public class Controller {
 
 	public static void EditionInformationEducational(User user) {
 
-		user.profile.professionalInformation.setCompanyName(Capture.courseName());
-		user.profile.professionalInformation.setFunction(Capture.yearConclusion());
-		user.profile.professionalInformation.setInitialDate(Capture.institutionalName());
+		user.profile.educationalInformation.setCourse(Capture.courseName());
+		user.profile.educationalInformation.setYearConclusion(Capture.yearConclusion());
+		user.profile.educationalInformation.setInstitutionalName(Capture.institutionalName());
 
 		crudImpl.updateInstance(user);
 	}
@@ -127,10 +128,42 @@ public class Controller {
 		int idUserGuest = Capture.getIdSolicitation();
 		User userGuest = crudImpl.getInstanceId(idUserGuest);
 
+		List<User> list = userGuest.getFriendRequest();
+
+		// VERIFICANDO SE JA FOI ENVIADO SOLICITACAO
+		Iterator<User> itr = list.iterator();
+		while (itr.hasNext()) {
+			User element = (User) itr.next();
+			if (element.getId() == user.getId()) {
+				Screen.pendingFriendRequest();
+				return;
+			}
+		}
+
+		// VERIFICANDO SE JA RECEBEU SOLICITACACAO
+		list = user.getFriendRequest();
+		itr = list.iterator();
+		while (itr.hasNext()) {
+			User element = (User) itr.next();
+			if (element.getId() == idUserGuest) {
+				Screen.pendingFriendRequest();
+				return;
+			}
+		}
+		// VERIFICA SE JA SAO AMIGOS
+		list = user.getFriend();
+		itr = list.iterator();
+		while (itr.hasNext()) {
+			User element = (User) itr.next();
+			if (element.getId() == idUserGuest) {
+				Screen.areFriends();
+				return;
+			}
+		}
+
 		userGuest.setFriendRequest(user);
-
 		crudImpl.updateInstance(userGuest);
-
+		Screen.requestSend();
 	}
 
 	public static void listFriends(User user) {
@@ -149,6 +182,8 @@ public class Controller {
 		listFriends(user);
 
 		int idFriend = Capture.getIdSolicitation();
+		if (idFriend == 0)
+			return -1;
 		String msgContent = Capture.writeMessage();
 
 		List<Chat> chats = user.getChat();
@@ -200,9 +235,10 @@ public class Controller {
 		return false;
 	}
 
-	public static void searchUser() {
+	public static boolean searchUser() {
 		List<User> users = crudImpl.getAllInstances();
 
+		boolean bool = false;
 		String name = Capture.nameUser();
 
 		Iterator<User> itr = users.iterator();
@@ -210,18 +246,22 @@ public class Controller {
 			User element = (User) itr.next();
 			if (element.getName().equalsIgnoreCase(name)) {
 				System.out.println(element.getId() + " " + element.getName() + " " + element.getLastName());
+				bool = true;
 			}
 		}
+		return bool;
 	}
 
-	public static void listRequest(User user) {
-
+	public static boolean listRequest(User user) {
+		boolean bool = false;
 		List<User> resquests = user.getFriendRequest();
 		Iterator<User> itr = resquests.iterator();
 		while (itr.hasNext()) {
 			User element = (User) itr.next();
 			System.out.println(element.getId() + " " + element.getName() + " " + element.getLastName());
+			bool = true;
 		}
+		return bool;
 	}
 
 	public static void aceptRequest(User user) {
@@ -236,6 +276,7 @@ public class Controller {
 		crudImpl.updateInstance(userFriend);
 
 		removeRequest(user, userFriend);
+		Screen.youAreNowFriends();
 	}
 
 	public static void removeRequest(User user, User userFriend) {
@@ -266,6 +307,8 @@ public class Controller {
 				crudImpl.updateInstance(user);
 			}
 		}
+
+		Screen.requestRemoved();
 	}
 
 	public static void createCommunity(User user) {
@@ -274,12 +317,82 @@ public class Controller {
 		String name = Capture.getCommunityName();
 		String describe = Capture.getDescribe();
 
-//		Community community = new Community();
-//		community.setName(name);
-//		community.setDescribe(describe);
-		// crudImpl.addInstance(community);
+		Community community = new Community();
+		community.setDados(name + "\n" + describe + "\n");
+		community.setUsers(user);
 
-	//	user.setCommunity(community);
-		// crudImpl.updateInstance(user);
+		crudImpl.addInstance(community);
+
+		user.setCommunity(community);
+		crudImpl.updateInstance(user);
+	}
+
+	public static void listCommunities() {
+
+		List<Community> communities = crudImpl.getCommunity();
+		Iterator<Community> itr = communities.iterator();
+		while (itr.hasNext()) {
+			Community element = (Community) itr.next();
+			Screen.printDataCommunities(element);
+		}
+	}
+
+	public static void listCommunities(User user) {
+
+		List<Community> communities = user.getCommunity();
+
+		Iterator<Community> itr = communities.iterator();
+		while (itr.hasNext()) {
+			Community element = (Community) itr.next();
+			Screen.printDataCommunities(element);
+		}
+	}
+
+	public static void communitySelect() {
+
+		int idCommunity = Capture.idCommunity();
+		List<Community> communities = crudImpl.getCommunity();
+
+		Iterator<Community> itr = communities.iterator();
+		while (itr.hasNext()) {
+			Community element = (Community) itr.next();
+			if (element.getId() == idCommunity) {
+
+				Screen.menuMsgCommunity();
+
+				switch (Capture.getOptionInt()) {
+				case 1: // VER MSGS
+
+					Controller.printChatCommunity(element.getChatCommunity());
+
+					break;
+				case 2: // ENVIAR MSG
+
+					break;
+				default:
+					// VOLTAR
+				}
+
+			}
+		}
+
+	}
+
+	private static void printChatCommunity(List<ChatCommunity> chatCommunity) {
+
+		Iterator<ChatCommunity> itr = chatCommunity.iterator();
+		while (itr.hasNext()) {
+			ChatCommunity element = (ChatCommunity) itr.next();
+			
+			List<MsgCommunity> msgs = element.getMsgsCommunity();
+			
+			Iterator<MsgCommunity> itr2 = msgs.iterator();
+			while (itr2.hasNext()) {
+				MsgCommunity element2 = (MsgCommunity) itr2.next();
+				//Ja deve ser salvo a msg com o no do user
+				Screen.msgChatCommunity(element2);
+			}
+		}
+
 	}
 }

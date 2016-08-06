@@ -10,6 +10,7 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.criterion.Restrictions;
 
 import br.edu.ufal.model.Chat;
+import br.edu.ufal.model.Community;
 import br.edu.ufal.model.Msg;
 import br.edu.ufal.model.User;
 
@@ -21,8 +22,24 @@ public class CRUDImpl {
 
 	Session session = threadLocal.get();
 
-		
 	public void addInstance(User instance) {
+		session = sessionFactory.openSession();
+
+		try {
+			session.beginTransaction();
+			session.save(instance);
+
+			session.getTransaction().commit();
+			session.close();
+		} catch (HibernateException e) {
+			e.printStackTrace();
+			session.getTransaction().rollback();
+
+		}
+
+	}
+
+	public void addInstance(Object instance) {
 		session = sessionFactory.openSession();
 
 		try {
@@ -55,7 +72,7 @@ public class CRUDImpl {
 		}
 
 	}
-	
+
 	public void updateInstance(Chat instance) {
 
 		session = sessionFactory.openSession();
@@ -72,7 +89,7 @@ public class CRUDImpl {
 		}
 
 	}
-	
+
 	public void addInstance(Chat chat, Msg msg) {
 
 		session = sessionFactory.openSession();
@@ -90,7 +107,7 @@ public class CRUDImpl {
 		}
 
 	}
-	
+
 	public void addInstance(Msg instance) {
 
 		session = sessionFactory.openSession();
@@ -219,5 +236,25 @@ public class CRUDImpl {
 
 		}
 		return false;
+	}
+
+	@SuppressWarnings({ "deprecation", "unchecked" })
+	public List<Community> getCommunity() {
+		session = sessionFactory.openSession();
+		List<Community> list = null;
+
+		try {
+			session.beginTransaction();
+
+			list = session.createCriteria(Community.class).list();
+
+			session.close();
+		} catch (HibernateException e) {
+			e.printStackTrace();
+			session.getTransaction().rollback();
+
+		}
+
+		return list;
 	}
 }

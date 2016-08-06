@@ -1,5 +1,7 @@
 package br.edu.ufal.view;
 
+import br.edu.ufal.model.Community;
+import br.edu.ufal.model.MsgCommunity;
 import br.edu.ufal.model.User;
 
 public class Screen {
@@ -426,5 +428,70 @@ public class Screen {
 
 	public static void getDescribeCommunity() {
 		System.out.print("Descricao: ");
+	}
+
+	public static void noRequest() {
+		System.out.println(" -----------------------------");
+		System.out.println("| Sem solicitacoes de amizade |");
+		System.out.println(" -----------------------------");
+	}
+
+	public static void UserNotFound() {
+		System.out.println(" -----------------------------");
+		System.out.println("|   Usuario nao encontrado    |");
+		System.out.println(" -----------------------------");
+	}
+
+	public static void pendingFriendRequest() {
+		System.out.println(" --------------------------------------");
+		System.out.println("|   Solicitacao de amizade pendente    |");
+		System.out.println(" --------------------------------------");
+	}
+
+	public static void areFriends() {
+		System.out.println(" ---------------------------");
+		System.out.println("|   Voces ja sao amigos     |");
+		System.out.println(" ---------------------------");
+	}
+
+	public static void requestRemoved() {
+		System.out.println(" ----------------------------");
+		System.out.println("|   Solicitacao removida     |");
+		System.out.println(" ----------------------------");
+	}
+
+	public static void requestSend() {
+		System.out.println(" ---------------------------------------");
+		System.out.println("|   Solicitacao enviada com sucesso     |");
+		System.out.println(" ---------------------------------------");
+	}
+
+	public static void youAreNowFriends() {
+		System.out.println(" ------------------------------");
+		System.out.println("|   Voces agora sao amigos     |");
+		System.out.println(" ------------------------------");
+	}
+
+	public static void printDataCommunities(Community element) {
+		
+		System.out.println(element.getId());
+		System.out.println(element.getDados());
+	}
+
+	public static void menuMsgCommunity() {
+		System.out.println(" xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+		System.out.println("| 1 - Ver msgs chat da comunidade |");
+		System.out.println("| 1 - Enviar msg para comunidade  |");
+		System.out.println("| 2 - voltar	                  |");
+		System.out.println(" xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+		System.out.print(" >> ");
+	}
+
+	public static void selectCommunity() {
+		System.out.print("Selecionar comunidade (id): ");
+	}
+
+	public static void msgChatCommunity(MsgCommunity element2) {
+		System.out.println(element2.getContent());
 	}
 }

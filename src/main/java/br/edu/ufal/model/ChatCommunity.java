@@ -26,6 +26,14 @@ public class ChatCommunity {
 	public void setId(int id) {
 		this.id = id;
 	}
+
+	public List<MsgCommunity> getMsgsCommunity() {
+		return msgsCommunity;
+	}
+
+	public void setMsgsCommunity(MsgCommunity msgCommunity) {
+		this.msgsCommunity.add(msgCommunity);
+	}
 	
 	
 	
