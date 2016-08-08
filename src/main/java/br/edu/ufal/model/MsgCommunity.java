@@ -30,5 +30,4 @@ public class MsgCommunity {
 		this.content = content;
 	}
 	
-	
 }

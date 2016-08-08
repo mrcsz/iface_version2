@@ -55,6 +55,23 @@ public class CRUDImpl {
 		}
 
 	}
+	
+	public void updateInstance(Object instance) {
+		session = sessionFactory.openSession();
+
+		try {
+			session.beginTransaction();
+			session.update(instance);
+
+			session.getTransaction().commit();
+			session.close();
+		} catch (HibernateException e) {
+			e.printStackTrace();
+			session.getTransaction().rollback();
+
+		}
+
+	}
 
 	public void updateInstance(User instance) {
 
@@ -256,5 +273,31 @@ public class CRUDImpl {
 		}
 
 		return list;
+	}
+
+	public Chat getChat(int idChat) {
+
+		session = sessionFactory.openSession();
+
+		try {
+			session.beginTransaction();
+
+			@SuppressWarnings("deprecation")
+			Criteria crit = session.createCriteria(Chat.class);
+			crit.add(Restrictions.eq("id", idChat));
+			crit.setMaxResults(1);
+
+			Chat chat = (Chat) crit.uniqueResult();
+
+			session.close();
+
+			return chat;
+
+		} catch (HibernateException e) {
+			e.printStackTrace();
+			session.getTransaction().rollback();
+
+		}
+		return null;
 	}
 }

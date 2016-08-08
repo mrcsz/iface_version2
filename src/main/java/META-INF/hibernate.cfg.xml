@@ -4,7 +4,7 @@
 
 
 		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-		<property name="hibernate.connection.password">mysql</property>
+		<property name="hibernate.connection.password"></property>
 		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/course?useTimezone=true&amp;serverTimezone=UTC</property>
 		<property name="hibernate.connection.username">root</property>
 		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
@@ -15,8 +15,7 @@
 		
 		<mapping class="br.edu.ufal.model.User"/>
 		<mapping class="br.edu.ufal.model.Chat"/>		
-		<mapping class="br.edu.ufal.model.Community"/>	
-		<mapping class="br.edu.ufal.model.ChatCommunity"/>				
+		<mapping class="br.edu.ufal.model.Community"/>					
 		<mapping class="br.edu.ufal.model.MsgCommunity"/>				
 		<mapping class="br.edu.ufal.model.Msg"/>		
 		<mapping class="br.edu.ufal.model.Profile"/>

@@ -1,6 +1,7 @@
 package br.edu.ufal.view;
 
 import br.edu.ufal.model.Community;
+import br.edu.ufal.model.Msg;
 import br.edu.ufal.model.MsgCommunity;
 import br.edu.ufal.model.User;
 
@@ -44,12 +45,6 @@ public class Screen {
 		System.out.println(" ------------------------------------------- \n");
 	}
 
-	// public void msgVoltando() {
-	//
-	// System.out.println("|*** Voltando ao menu anterior ***|");
-	// System.out.println(" ----------------------------------------------");
-	// }
-	//
 	public static void displayInitialMenu() {
 		System.out.println(" #################################");
 		System.out.println("|       BEM VINDO AO IFACE        |");
@@ -58,66 +53,12 @@ public class Screen {
 		System.out.println("| 2 - Amigos                      |");
 		System.out.println("| 3 - Comunidades                 |");
 		System.out.println("| 4 - Chat                        |");
-		System.out.println("| 5 - Busca por usuario           |");
-		System.out.println("| 6 - Configuracoes               |");
-		System.out.println("| 7 - Logout                      |");
-		System.out.println("| 8 - Encerrar aplicativo         |");
+		System.out.println("| 5 - Configuracoes               |");
+		System.out.println("| 6 - Logout                      |");
+		System.out.println("| 7 - Encerrar aplicativo         |");
 		System.out.println(" xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
 		System.out.print(" >> ");
 	}
-
-	// public void msgAcessoNegado() {
-	// System.out.println(" -----------------");
-	// System.out.println("| Acesso Negado! |");
-	// System.out.println(" -----------------");
-	//
-	// }
-	//
-	// public String msgErroNomeNull() {
-	//
-	// String msg = " ----------------------------------------------\n"
-	// + "| Erro (O campo nome nao pode estar vazio) |\n"
-	// + " ----------------------------------------------";
-	//
-	//
-	// return msg;
-	// }
-	//
-	// public String msgErroEmailInvalido() {
-	// String msg = " ----------------------------------------------\n"
-	// +"| Erro (Formato de email invalido) |\n"
-	// +" ----------------------------------------------";
-	//
-	// return msg;
-	// }
-	//
-	// public String msgSexoInvalido() {
-	//
-	// String msg = " ----------------------------------------------\n"
-	// +"| Erro (opcao de sexo invalida) |\n"
-	// +" ----------------------------------------------";
-	//
-	// return msg;
-	// }
-	//
-	// public String msgErroDataIvalida() {
-	//
-	// String msg = " ----------------------------------------------\n"
-	// +"| Erro (Data de nascimento invalida) |\n"
-	// +" ----------------------------------------------";
-	//
-	// return msg;
-	// }
-	//
-	// public String msgErroSenhaNula() {
-	//
-	// String msg = " ----------------------------------------------\n"
-	// +"| Erro (A senha nao pode ser nula) |\n"
-	// +" ----------------------------------------------";
-	//
-	// return msg;
-	// }
-	//
 
 	public static void profileEditionOption() {
 
@@ -139,54 +80,6 @@ public class Screen {
 		System.out.print(" >> ");
 
 	}
-
-	//
-	// public void atualizadoComSucesso(){
-	// System.out.println(" -----------------------------------");
-	// System.out.println("| Atualizado com sucesso |");
-	// System.out.println(" -----------------------------------");
-	// System.out.println("");
-	// }
-	//
-	// public void opcaoSexo(){
-	// System.out.println(" -------------------");
-	// System.out.println("| 1 - Masculino |");
-	// System.out.println("| 2 - Feminino |");
-	// System.out.println(" -------------------");
-	// System.out.print(" >> ");
-	// }
-	//
-	//
-
-	//
-	// }
-	//
-	// public void solicitacaoDeAmizadeEnviada() {
-	// System.out.println("
-	// -------------------------------------------------------");
-	// System.out.println("| Solicitacao de amizade enviada com sucesso |");
-	// System.out.println("
-	// -------------------------------------------------------");
-	// System.out.println("");
-	//
-	// }
-	//
-
-	//
-	// public void msgAmigoAdc() {
-	// System.out.println(" ------- ---------------------------");
-	// System.out.println("| Voces agora sao amigos |");
-	// System.out.println(" -----------------------------------");
-	// System.out.println("");
-	// }
-	//
-	// public void SolicitacaoJaFoiEnviada() {
-	// System.out.println(" -------------------------------------");
-	// System.out.println("| esse convite esta pendente |");
-	// System.out.println(" -------------------------------------");
-	// System.out.println("");
-	// }
-	//
 
 	public static void menuSettings() {
 		System.out.println(" xxxxxxxxxxxxxxxxxxxxxx");
@@ -223,40 +116,6 @@ public class Screen {
 		System.out.println(" xxxxxxxxxxxxxxxxxxxxxxxxxx");
 		System.out.print(" >> ");
 	}
-	//
-	// public void historicoMsgLimpo() {
-	// System.out.println("
-	// ------------------------------------------------------");
-	// System.out.println("| Historico de msgs limpo com sucesso |");
-	// System.out.println("
-	// ------------------------------------------------------");
-	// System.out.println("");
-	// }
-	//
-	// public void CaixaDeMsgsVazia() {
-	// System.out.println(" -------------------------------------");
-	// System.out.println("| Caixa de mensagens vazia |");
-	// System.out.println(" -------------------------------------");
-	// System.out.println("");
-	// }
-	//
-	// public void msgNaoSaoAmigos() {
-	// System.out.println(" -----------------------------------------------");
-	// System.out.println("| Voce nao pode enviar mensagens |");
-	// System.out.println("| pra esse usuario voces nao sao amigos |");
-	// System.out.println(" -----------------------------------------------");
-	// System.out.println("");
-	// }
-	//
-	// public void JaSaoAmigos() {
-	// System.out.println(" -----------------------------------");
-	// System.out.println("| Voce ja sao amigos |");
-	// System.out.println(" -----------------------------------");
-	// System.out.println("");
-	// }
-	//
-	//
-	//
 
 	public static void getNameUser() {
 		System.out.print("   Nome: ");
@@ -354,11 +213,6 @@ public class Screen {
 		System.out.print(" >> ");
 	}
 
-	// public static void PrintIdAndNomeUser(int id, User generalUser) {
-	// System.out.println(generalUser.getId() + " " + generalUser.getName() + "
-	// " + generalUser.getLastName());
-	// }
-
 	public static void menuAddFriend() {
 		System.out.println(" xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
 		System.out.println("| 1 - enviar solicitacao |");
@@ -416,7 +270,7 @@ public class Screen {
 	}
 
 	public static void newCommunity() {
-		
+
 		System.out.println(" ------------------");
 		System.out.println("| Nova comunidade  |");
 		System.out.println(" ------------------");
@@ -473,7 +327,7 @@ public class Screen {
 	}
 
 	public static void printDataCommunities(Community element) {
-		
+
 		System.out.println(element.getId());
 		System.out.println(element.getDados());
 	}
@@ -481,8 +335,8 @@ public class Screen {
 	public static void menuMsgCommunity() {
 		System.out.println(" xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
 		System.out.println("| 1 - Ver msgs chat da comunidade |");
-		System.out.println("| 1 - Enviar msg para comunidade  |");
-		System.out.println("| 2 - voltar	                  |");
+		System.out.println("| 2 - Enviar msg para comunidade  |");
+		System.out.println("| 3 - voltar	                  |");
 		System.out.println(" xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
 		System.out.print(" >> ");
 	}
@@ -493,5 +347,27 @@ public class Screen {
 
 	public static void msgChatCommunity(MsgCommunity element2) {
 		System.out.println(element2.getContent());
+	}
+
+	public static void MenuSelectCommunity() {
+		System.out.println(" xxxxxxxxxxxxxxxx");
+		System.out.println("| 1 - selecionar |");
+		System.out.println("| 2 - voltar     |");
+		System.out.println(" xxxxxxxxxxxxxxxx");
+		System.out.print(" >> ");
+	}
+
+	public static void printMsg(Msg element2) {
+		System.out.println(element2.getSender() + " " + element2.getContent());
+	}
+
+	public static void boxMsgEmpty() {
+		System.out.println(" ------------------------------");
+		System.out.println("|   Caixa de entrada vazia     |");
+		System.out.println(" ------------------------------");
+	}
+
+	public static void idChat() {
+		System.out.print("Selecionar a conversa(id): ");
 	}
 }

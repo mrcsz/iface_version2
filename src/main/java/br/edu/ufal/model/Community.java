@@ -10,6 +10,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 @Entity
 public class Community {
 	
@@ -23,8 +26,18 @@ public class Community {
 	List<User> users = new ArrayList<User>(); //User do indice zero eh adm
 	
 	@ManyToMany(cascade = CascadeType.ALL)
-	List<ChatCommunity> communities = new ArrayList<ChatCommunity>();
+	@LazyCollection(LazyCollectionOption.FALSE)
+	List<MsgCommunity> msgsCommunity = new ArrayList<MsgCommunity>();
 
+	
+	public List<MsgCommunity> getMsgsCommunity() {
+		return msgsCommunity;
+	}
+
+	public void setMsgsCommunity(MsgCommunity msgCommunity) {
+		this.msgsCommunity.add(msgCommunity);
+	}
+	
 	public String getDados() {
 		return dados;
 	}
@@ -43,14 +56,6 @@ public class Community {
 
 	public int getId() {
 		return id;
-	}
-
-	public List<ChatCommunity> getChatCommunity() {
-		return communities;
-	}
-
-	public void setCommunity(ChatCommunity community) {
-		this.communities.add(community);
 	}
 
 	public void setId(int id) {

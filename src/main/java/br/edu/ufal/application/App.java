@@ -118,6 +118,7 @@ public class App {
 							case 2: // BUSCAR AMIGOS
 
 								if (Controller.searchUser()) {
+									
 									Screen.menuAddFriend();
 
 									switch (Capture.getOptionInt()) {
@@ -156,28 +157,39 @@ public class App {
 
 								break;
 							case 3: // LISTAR COMUNIDADE
-								
+
 								Screen.menuListCommunities();
 								switch (Capture.getOptionInt()) {
 								case 1: // TODAS
 
 									Controller.listCommunities();
+
+									Screen.MenuSelectCommunity();
+
+									if (Capture.getOptionInt() == 1) {
+										Controller.communitySelect(user);
+									}
 									break;
 								case 2: // SO AS DO USER
-									
-									Controller.listCommunities(user);
-									break;
-								default:
-									// VOLTAR
-								}
-								
-								Controller.communitySelect();
-									
-								}
 
-								break;
-							default:
-								// VOLTAR
+									Controller.listCommunities(user);
+
+									Screen.MenuSelectCommunity();
+
+									if (Capture.getOptionInt() == 1) {
+										Controller.communitySelect(user);
+									}
+
+									break;
+
+								default:// SELECIONAR COMUNIDADE
+									//VOLTAR
+								}
+							}
+
+							break;
+						default:
+							// VOLTAR
 
 						case 4: // CHAT(private)
 
@@ -202,7 +214,7 @@ public class App {
 								break;
 							case 2:// CAIXA DE MENSAGENS
 
-								boolean haveMsg = Controller.msgBox();
+								boolean haveMsg = Controller.msgBox(user);
 
 								if (haveMsg) {
 									Screen.menuEntryBox();
@@ -210,8 +222,8 @@ public class App {
 									switch (Capture.getOptionInt()) {
 									case 1: // SELECIONAR CONVERSA
 
-										// Controller.()
-										// MostraConversa
+										Controller.showMsgs(user);
+										
 										break;
 									default:
 
@@ -219,8 +231,7 @@ public class App {
 
 									}
 								} else {
-									// Screen.boxText();
-									// vazia
+									 Screen.boxMsgEmpty();
 								}
 
 								break;
@@ -235,11 +246,8 @@ public class App {
 							}
 
 							break;
-						case 5: // BUSCAR USUARIO
 
-							break;
-
-						case 6: // CONFIGURACOES
+						case 5: // CONFIGURACOES
 
 							Screen.menuSettings();
 							// configuracao
@@ -264,11 +272,11 @@ public class App {
 							default:
 								// VOLTAR
 							}
-						case 7: // LOGOUT
+						case 6: // LOGOUT
 							loop = false;
 
 							break;
-						case 8: // ENCERRA APLICATIVO
+						case 7: // ENCERRA APLICATIVO
 							loop = false;
 							loopGeneral = false;
 							Screen.appFinalised();

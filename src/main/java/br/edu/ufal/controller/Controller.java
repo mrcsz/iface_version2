@@ -5,7 +5,6 @@ import java.util.List;
 
 import br.edu.ufal.dao.CRUDImpl;
 import br.edu.ufal.model.Chat;
-import br.edu.ufal.model.ChatCommunity;
 import br.edu.ufal.model.Community;
 import br.edu.ufal.model.Msg;
 import br.edu.ufal.model.MsgCommunity;
@@ -203,7 +202,6 @@ public class Controller {
 						element.getMsgs().add(msg);
 						elem.getMsgs().add(msg);
 
-						crudImpl.addInstance(msg);
 						bool = false;
 					}
 				}
@@ -218,21 +216,33 @@ public class Controller {
 			chat.setIdFriend(idFriend);
 			chat.setMsgs(msg);
 
-			crudImpl.addInstance(chat, msg);
 			user.getChat().add(chat);
 			userFriend.getChat().add(chat);
 
 		}
 
 		crudImpl.updateInstance(user);
+		crudImpl.updateInstance(userFriend);
 
 		return 0;
 	}
 
-	public static boolean msgBox() {
+	public static boolean msgBox(User user) {
 
-		// LISTA AS MENSAGENS DA CAIXA DE TEXTO
-		return false;
+		List<Chat> chat = user.getChat();
+		boolean bool = false;
+
+		Iterator<Chat> itr = chat.iterator();
+
+		while (itr.hasNext()) {
+
+			Chat element = (Chat) itr.next();
+
+			System.out.println(element.getId() + " " + crudImpl.getInstanceId(element.getIdFriend()).getName());
+			bool = true;
+		}
+
+		return bool;
 	}
 
 	public static boolean searchUser() {
@@ -242,8 +252,10 @@ public class Controller {
 		String name = Capture.nameUser();
 
 		Iterator<User> itr = users.iterator();
+
 		while (itr.hasNext()) {
 			User element = (User) itr.next();
+
 			if (element.getName().equalsIgnoreCase(name)) {
 				System.out.println(element.getId() + " " + element.getName() + " " + element.getLastName());
 				bool = true;
@@ -265,18 +277,39 @@ public class Controller {
 	}
 
 	public static void aceptRequest(User user) {
+
 		int idfriend = Capture.getIdSolicitation();
+		boolean bool = true;
 
 		User userFriend = crudImpl.getInstanceId(idfriend);
 
-		user.setFriend(userFriend);
-		userFriend.setFriend(user);
+		if (userFriend.equals(null)) {
+			Screen.UserNotFound();
+			return;
+		}
 
-		crudImpl.updateInstance(user);
-		crudImpl.updateInstance(userFriend);
+		List<User> isFriend = user.getFriendRequest();
+		Iterator<User> itr = isFriend.iterator();
+		while (itr.hasNext()) {
+			User element = (User) itr.next();
 
-		removeRequest(user, userFriend);
-		Screen.youAreNowFriends();
+			if (element.getId() == idfriend) {
+				Screen.areFriends();
+				bool = false;
+			}
+
+		}
+
+		if (bool) {
+			user.setFriend(userFriend);
+			userFriend.setFriend(user);
+
+			crudImpl.updateInstance(user);
+			crudImpl.updateInstance(userFriend);
+
+			removeRequest(user, userFriend);
+			Screen.youAreNowFriends();
+		}
 	}
 
 	public static void removeRequest(User user, User userFriend) {
@@ -348,7 +381,7 @@ public class Controller {
 		}
 	}
 
-	public static void communitySelect() {
+	public static void communitySelect(User user) {
 
 		int idCommunity = Capture.idCommunity();
 		List<Community> communities = crudImpl.getCommunity();
@@ -363,10 +396,17 @@ public class Controller {
 				switch (Capture.getOptionInt()) {
 				case 1: // VER MSGS
 
-					Controller.printChatCommunity(element.getChatCommunity());
+					Controller.printChatCommunity(element.getMsgsCommunity());
 
 					break;
 				case 2: // ENVIAR MSG
+
+					MsgCommunity msg = new MsgCommunity();
+
+					msg.setContent("   " + user.getId() + " " + user.getName() + ": " + Capture.writeMessage());
+
+					element.setMsgsCommunity(msg);
+					crudImpl.updateInstance(element);
 
 					break;
 				default:
@@ -378,21 +418,34 @@ public class Controller {
 
 	}
 
-	private static void printChatCommunity(List<ChatCommunity> chatCommunity) {
+	private static void printChatCommunity(List<MsgCommunity> msgs) {
 
-		Iterator<ChatCommunity> itr = chatCommunity.iterator();
+		Iterator<MsgCommunity> itr = msgs.iterator();
 		while (itr.hasNext()) {
-			ChatCommunity element = (ChatCommunity) itr.next();
-			
-			List<MsgCommunity> msgs = element.getMsgsCommunity();
-			
-			Iterator<MsgCommunity> itr2 = msgs.iterator();
-			while (itr2.hasNext()) {
-				MsgCommunity element2 = (MsgCommunity) itr2.next();
-				//Ja deve ser salvo a msg com o no do user
-				Screen.msgChatCommunity(element2);
-			}
+			MsgCommunity element = (MsgCommunity) itr.next();
+			// Ja esta com o nome do user incluso
+			Screen.msgChatCommunity(element);
 		}
 
+	}
+
+	public static void showMsgs(User user) {
+
+		try {
+			Chat chat = crudImpl.getChat(Capture.getIdChat());
+
+			List<Msg> msgs = chat.getMsgs();
+
+			Iterator<Msg> itr = msgs.iterator();
+
+			while (itr.hasNext()) {
+
+				Msg element = (Msg) itr.next();
+
+				Screen.printMsg(element);
+			}
+		} catch (IndexOutOfBoundsException e) {
+			return;
+		}
 	}
 }

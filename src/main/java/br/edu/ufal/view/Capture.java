@@ -133,4 +133,9 @@ public class Capture {
 		Screen.selectCommunity();
 		return Capture.getOptionInt();
 	}
+
+	public static int getIdChat() {
+		Screen.idChat();
+		return input.nextInt();
+	}
 }

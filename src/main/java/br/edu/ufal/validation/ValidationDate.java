@@ -104,11 +104,15 @@ public class ValidationDate {
 
 		GregorianCalendar calendar = new GregorianCalendar();
 		int dia = 0, mes = 0, ano = 0;
-		String diaStr = date.substring(0, 2);
-		String mesStr = date.substring(3, 5);
-		String anoStr = date.substring(6, 10);
-
+		
+		
 		try {
+			
+			String diaStr = date.substring(0, 2);
+			String mesStr = date.substring(3, 5);
+			String anoStr = date.substring(6, 10);
+
+		
 			dia = Integer.parseInt(diaStr);
 			mes = Integer.parseInt(mesStr);
 			ano = Integer.parseInt(anoStr);
